@@ -1,0 +1,65 @@
+// 主体
+a{
+    color:@primary;
+}
+.c-main{
+    .ml(@aside-left - 40px);
+    .mr(@aside-right);
+    .pr;
+    min-height: calc(100vh - @header-height - @bread-height);
+    margin-top:@header-height + @bread-height;
+    transition:0.2s ease-in;
+}
+.c-main.without-bread{
+    margin-top:@header-height;
+}
+.c-main.without-right{
+    .mr(0) !important;
+
+    .c-sidebar-right{
+        .none;
+    }
+}
+.c-main.without-left{
+    .ml(0) !important;
+}
+
+
+@media screen and (max-width:@smallpc){
+    .c-main{
+        .mr(0);
+    }
+}
+
+// 笔记本<1440 缩小双边栏
+@media screen and (max-width:@smallpc){
+    .c-main{
+        .ml(@aside-left - 40px);
+    }
+}
+
+// 平板横屏
+@media screen and (max-width:@notebook){
+    .c-main{
+        .ml(@aside-left - 60px);
+    }
+}
+
+//平板横屏与手机
+@media screen and (max-width:@ipad){
+    .c-main{
+        .ml(0);
+    }
+}
+
+@media print{
+    .c-main{margin:0;.w(100%);}
+}
+
+@media screen and (max-width:@phone){
+    .env-app{
+        .c-main{
+            .mt(0);
+        }
+    }
+}
