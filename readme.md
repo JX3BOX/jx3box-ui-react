@@ -20,3 +20,13 @@ react版的公共组件
 - [重构Breadcrumb](https://github.com/JX3BOX/jx3box-ui-react/issues/4)
 
 - [重构Thx](https://github.com/JX3BOX/jx3box-ui-react/issues/6)
+
+## StoryBook
+
+storybook 可以查看所有 Components
+
+```code
+npm run dev
+npm run storybook
+```
+
