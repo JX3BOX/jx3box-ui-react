@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@components/*": ["src/components/*"],
+        "@types": ["./src/types.ts"]
+      },
+      "strictNullChecks": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "jsx": "react",
+      "noUnusedParameters": true,
+      "noUnusedLocals": true,
+      "noImplicitAny": true,
+      "target": "es6",
+      "lib": ["dom", "es2017"],
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "declaration": true,
+    
+    },
+    "exclude": ["node_modules", "build"]
+    // "include": ["src/**/*"],
+  }
+  
