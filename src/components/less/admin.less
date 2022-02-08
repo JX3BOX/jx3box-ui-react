@@ -1,0 +1,83 @@
+.c-admin{
+    top:@header-height + @bread-height !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: hidden;
+    margin: 0;
+
+    *:focus{
+        outline: none !important;
+        box-shadow:none !important;
+    }
+
+    .el-drawer{
+        .size(100%);
+        overflow-y:auto;
+    }
+}
+
+.c-admin-mark{
+    .el-radio{.mb(10px);}
+}
+
+.c-admin-wrapper{
+    padding:20px;
+    box-sizing: border-box;
+}
+
+.c-admin-highlight-checkbox{
+    .mr(10px) !important;
+}
+.c-admin-highlight-block{
+    .y;
+}
+.c-admin-highlight-preview{
+    .fz(14px);.bold;
+    .ml(10px);
+}
+
+.c-admin-banner{
+    .u-banner{
+        .mt(5px);
+    }
+    .u-btn{
+        .pointer;
+    }
+}
+.c-admin-upload{
+    .w(100%) !important;
+    .x;
+
+    .el-upload{
+        .size(100%);
+        box-sizing: border-box;
+    }
+    overflow: hidden;
+}
+
+.c-admin-info{
+    display: flex;
+}
+.c-admin-type{
+    .w(200px);
+    .mr(10px);
+}
+.c-admin-author{
+    flex:1;
+}
+
+.c-admin-buttons{
+    .mt(20px);
+    .x;
+}
+
+@media screen and (max-width:@ipad){
+    .c-admin{
+        .el-drawer{
+            .w(100%) !important;
+        }
+    }
+}

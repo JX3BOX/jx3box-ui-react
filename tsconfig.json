@@ -17,13 +17,13 @@
       "jsx": "react",
       "noUnusedParameters": true,
       "noUnusedLocals": true,
-      "noImplicitAny": true,
+      "noImplicitAny": false,
       "target": "es6",
       "lib": ["dom", "es2017"],
       "skipLibCheck": true,
       "allowSyntheticDefaultImports": true,
       "declaration": true,
-    
+      "resolveJsonModule": true
     },
     "exclude": ["node_modules", "build", "src/stories"]
     // "include": ["src/**/*"],

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../less/index.less';
 
 export interface HeaderProps {}
 

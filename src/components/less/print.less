@@ -1,0 +1,28 @@
+.w-print{
+    .dbi;
+    .u-icon{
+        .mr(5px);
+    }
+    .u-text{
+        .fz(13px);
+    }
+    .pointer;
+    transition:0.1s ease-in-out;
+    &:hover{
+        color:@pink;
+    }
+}
+@media print{
+
+    // 边距
+    @page {
+        margin: 1cm 5mm;
+    }
+    
+}
+
+@media screen and (max-width:@phone){
+    .w-print{
+        .none;
+    }
+}
