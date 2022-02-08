@@ -3,6 +3,10 @@
       "baseUrl": ".",
       "paths": {
         "@components/*": ["src/components/*"],
+        "@service/*": ["src/service/*"],
+        "@assets/*": ["src/assets/*"],
+        "@data/*": ["src/data/*"],
+        "@utils/*": ["src/utils/*"],
         "@types": ["./src/types.ts"]
       },
       "strictNullChecks": true,
