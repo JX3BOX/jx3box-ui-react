@@ -4,3 +4,6 @@ build
 rollup
 
 /src/stories/*
+
+*.svg
+vite.config.ts

@@ -12,14 +12,6 @@
         .db;
     }
 
-    // transition:0.5s ease-in-out;
-    // transform: translateY(-100%);
-    // .pr;top:-@header-height;
-    // &.on{
-    //     transform: translateY(0);
-    //     top:0;
-    // }
-
     ul {
         margin: 0;
         padding: 10px 0 10px 20px;
@@ -170,6 +162,22 @@
             .u-pic {
                 .size(28px);
             }
+        }
+    }
+}
+
+#c-header-box {
+    .c-header-search {
+        float:none;
+        .w(auto);
+        margin:0 20px 10px 20px;
+        box-sizing: border-box;
+        padding:0;
+        .none;
+    }
+    @media screen and (max-width: @ipad-y) {
+        .c-header-search {
+            .db;
         }
     }
 }

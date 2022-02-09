@@ -4,7 +4,6 @@
       "paths": {
         "@components/*": ["src/components/*"],
         "@service/*": ["src/service/*"],
-        "@assets/*": ["src/assets/*"],
         "@data/*": ["src/data/*"],
         "@utils/*": ["src/utils/*"],
         "@types": ["./src/types.ts"]
@@ -25,7 +24,8 @@
       "declaration": true,
       "resolveJsonModule": true
     },
-    "exclude": ["node_modules", "build", "src/stories"]
+    "exclude": ["node_modules", "build", "src/stories"],
+    "references": [{ "path": "./tsconfig.node.json" }]
     // "include": ["src/**/*"],
   }
   

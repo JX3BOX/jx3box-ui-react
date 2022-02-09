@@ -30,3 +30,11 @@ npm run dev
 npm run storybook
 ```
 
+## Vite
+
+本地开发用 vite 
+
+```code
+npm run dev
+```
+
