@@ -1,20 +1,9 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { isApp } from '@utils/utils';
 import classNames from 'classnames';
 import Close from '../../assets/leftsidebar/close.svg';
 import Open from '../../assets/leftsidebar/open.svg';
-
-/**
- * LeftSidebar组件内包裹的内部组件会透传
- * leftSidebarVisible 和 toggleLeftSidebar props
- *
- * @export
- * @interface LeftSidebarInjectChildrenProps
- */
-export interface LeftSidebarInjectChildrenProps {
-  leftSidebarVisible: boolean;
-  toggleLeftSidebar: () => void;
-}
+import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
 
 /**
  *
@@ -29,17 +18,8 @@ export interface LeftSidebarProps {
 
 const LeftSidebar: React.FC<LeftSidebarProps> = props => {
   const { withoutBread = true } = props;
-
-  const [leftSidebarVisible, setLeftSidebarVisible] = useState(true);
-
-  /**
-   * 切换 leftSidebar 显示/隐藏
-   * @method toggleLeftSidebar
-   */
-  const toggleLeftSidebar = useCallback(
-    () => setLeftSidebarVisible(prevSidebarVisible => !prevSidebarVisible),
-    [setLeftSidebarVisible]
-  );
+  const { leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxLayoutContext);
+  const { toggle } = leftSiderHook;
 
   /**
    * 用 useMemo 计算出sidebar的最终classNames
@@ -60,10 +40,10 @@ const LeftSidebar: React.FC<LeftSidebarProps> = props => {
       <aside className={sidebarCls}>
         <div className='c-sidebar-left-inner'>
           {props.children &&
-            React.cloneElement(props.children, { leftSidebarVisible, toggleLeftSidebar })}
+            React.cloneElement(props.children, { leftSidebarVisible, toggleLeftSidebar: toggle })}
         </div>
 
-        <span title='收起侧边栏' className='c-sidebar-left-toggle' onClick={toggleLeftSidebar}>
+        <span title='收起侧边栏' className='c-sidebar-left-toggle' onClick={toggle}>
           {leftSidebarVisible ? <Close /> : <Open />}
         </span>
       </aside>
