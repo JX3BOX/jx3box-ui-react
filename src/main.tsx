@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './vite.less';
 import Header from '@components/header';
+import Footer from '@components/footer';
 
 const App = () => (
   <>
     <Header />
+    <Footer />
   </>
 );
 
