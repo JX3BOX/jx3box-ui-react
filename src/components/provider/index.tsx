@@ -1,13 +1,25 @@
 /* eslint-disable camelcase */
 import React, { useCallback, useEffect, useState } from 'react';
 import User from '@jx3box/jx3box-common/js/user';
-import { ChangeJx3BoxClientInterface, changeJx3BoxClient, getCurrentClient } from '@utils/utils';
+import { confirmClientVersion, getClientUrl, getCurrentClient } from '@utils/utils';
 import { notification } from 'antd';
 import { __Links, __Root, __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
 import { Jx3BoxUser, Jx3BoxUserAssets, UserLinks } from '@utils/types';
 import { getHomepageUrl, getMenu, getMsg } from '@service/header';
 import panelData from '@data/panel.json';
 import { getSuperAuthor } from '@service/user';
+
+interface ChangeJx3BoxClientInterface {
+  (targetClient: string): void;
+}
+
+const changeJx3BoxClient: ChangeJx3BoxClientInterface = (targetClient: string) => {
+  const currentClient = getCurrentClient();
+  if (confirmClientVersion(currentClient, targetClient)) {
+    return;
+  }
+  location.href = location.href.replace(getClientUrl(currentClient), getClientUrl(targetClient));
+};
 
 export interface Jx3BoxContextProps {
   /**

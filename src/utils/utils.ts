@@ -57,25 +57,6 @@ export const isMobileSize = (): boolean => window.innerWidth < 720;
 export const confirmClientVersion = (currentClient: string, targetClient: string): boolean =>
   currentClient === targetClient;
 
-export interface ChangeJx3BoxClientInterface {
-  (targetClient: string): void;
-}
-
-/**
- * 切换client版本
- * 如果要切换的版本和当前版本一致则不切换
- *
- * @param targetClient 要切换的目标client
- * @returns
- */
-export const changeJx3BoxClient: ChangeJx3BoxClientInterface = (targetClient: string) => {
-  const currentClient = getCurrentClient();
-  if (confirmClientVersion(currentClient, targetClient)) {
-    return;
-  }
-  location.href = location.href.replace(getClientUrl(currentClient), getClientUrl(targetClient));
-};
-
 /**
  * 我看不懂是什么操作
  * @param nav
