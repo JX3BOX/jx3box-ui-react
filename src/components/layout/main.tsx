@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
-import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
+import { Jx3BoxContext } from '@components/provider';
 
 /**
  * Layout 主显示容器 LayoutMain
@@ -14,8 +14,7 @@ import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
  * @returns
  */
 const LayoutMain: React.FC<{}> = props => {
-  const { breadcrumbVisible, leftSidebarVisible, rightSidebarVisible } =
-    useContext(Jx3BoxLayoutContext);
+  const { breadcrumbVisible, leftSidebarVisible, rightSidebarVisible } = useContext(Jx3BoxContext);
 
   /**
    * 使用 useMemo 计算最终的 mainClassNames

@@ -3,10 +3,10 @@ import { isApp } from '@utils/utils';
 import classNames from 'classnames';
 import Close from '../../assets/leftsidebar/close.svg';
 import Open from '../../assets/leftsidebar/open.svg';
-import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
+import { Jx3BoxContext } from '@components/provider';
 
 const LeftSidebar: React.FC<any> = props => {
-  const { breadcrumbVisible, leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxLayoutContext);
+  const { breadcrumbVisible, leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxContext);
   const { show, hide, toggle, setHasLeftSidebar } = leftSiderHook;
 
   /**

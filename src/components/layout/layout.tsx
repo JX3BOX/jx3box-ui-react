@@ -1,9 +1,32 @@
-import {
-  Jx3BoxLayoutContext,
-  Jx3BoxLayoutContextProps,
-} from '@components/provider/layout-provider';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
-import React, { useMemo, useState } from 'react';
+import { notification } from 'antd';
+import User from '@jx3box/jx3box-common/js/user';
+import { __Links, __Root, __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
+import {
+  USER_ASSETS_INIT,
+  USER_EDITOR_INIT,
+  USER_LINKS_INIT,
+  USER_MSG_UNREAD_INIT,
+  USER_PANEL_INIT,
+  USER_PRO_INIT,
+  USER_SUPER_AUTHOR_INIT,
+  USER_VIP_INIT,
+} from '@utils/constants';
+import { UserLinks } from '@utils/types';
+import { getHomepageUrl, getMenu, getMsg } from '@service/header';
+import { getSuperAuthor } from '@service/user';
+import panelData from '@data/panel.json';
+import { Jx3BoxContext, Jx3BoxContextProps } from '@components/provider';
+import { confirmClientVersion, getClientUrl, getCurrentClient } from '@utils/utils';
+
+const changeJx3BoxClient = (targetClient: string) => {
+  const currentClient = getCurrentClient();
+  if (confirmClientVersion(currentClient, targetClient)) {
+    return;
+  }
+  location.href = location.href.replace(getClientUrl(currentClient), getClientUrl(targetClient));
+};
 
 export interface BasicLayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -39,7 +62,132 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const [rightSidebarVisible, setRightSidebarVisible] = useState(false);
 
   /**
-   * 用useMemo计算出layout的cls方便后续计算
+   * 是否编辑
+   * @param isEditor
+   *
+   * 是否有未读消息
+   * @param unread
+   *
+   * 用户设置面板
+   * @param panel
+   *
+   * 用户会员相关
+   * @param assets
+   *
+   * 跳链相关
+   * @param links
+   */
+  const [isLogin, setIsLogin] = useState(User.isLogin());
+  const [user] = useState(User.getInfo());
+  const [isEditor, setIsEditor] = useState(USER_EDITOR_INIT);
+  const [unread, setUnread] = useState(USER_MSG_UNREAD_INIT);
+  const [panel, setPanel] = useState(USER_PANEL_INIT as any[]);
+  const [assets, setAssets] = useState(USER_ASSETS_INIT);
+  const [isSuperAuthor, setIsSuperAuthor] = useState(USER_SUPER_AUTHOR_INIT);
+  const [links, setLinks] = useState(USER_LINKS_INIT as UserLinks);
+  const [isVip, setIsVip] = useState(USER_VIP_INIT);
+  const [isPro, setIsPro] = useState(USER_PRO_INIT);
+
+  /**
+   * 查看用户是否有未读消息
+   * @method checkMsg
+   */
+  const checkMsg = useCallback(() => {
+    getMsg().then(result => {
+      setUnread(!!result.data.data.unread);
+    });
+  }, [getMsg]);
+
+  /**
+   * 请求设置面板;
+   * @method checkMsg
+   */
+  const loadPanel = useCallback(() => {
+    getMenu('panel')
+      .then(result => {
+        setPanel(result.data?.data?.val || panelData);
+      })
+      .catch(() => setPanel(panelData));
+  }, [getMenu]);
+
+  /**
+   * 请求用户会员;
+   * @method checkMsg
+   */
+  const loadAssets = () => {
+    User.getAsset().then(data => {
+      setAssets(data);
+    });
+  };
+
+  /**
+   * 查看用户权限
+   * @method checkMsg
+   */
+  const checkSuperAuthor = useCallback(() => {
+    getSuperAuthor(user?.uid).then(result => {
+      setIsSuperAuthor(result.data.data);
+    });
+  }, [user]);
+
+  const makeLinks = useCallback(() => {
+    setLinks({
+      msg: __Links.dashboard.msg,
+      publish: __Links.dashboard.publish,
+      dashboard: __Links.dashboard.home,
+      profile: __Links.dashboard.profile,
+      homepage: getHomepageUrl(user.uid),
+    });
+  }, [user]);
+
+  useEffect(() => {
+    makeLinks();
+
+    if (isLogin) {
+      // 如果登录了则请求用户其他状态
+      setIsEditor(User.isEditor());
+      checkMsg();
+      loadPanel();
+      loadAssets();
+      checkSuperAuthor();
+    }
+  }, [isLogin]);
+
+  useEffect(() => {
+    /**
+     * 设置用户魔盒是否VIP和PRO
+     * @method setIsVip
+     * @method setIsPro
+     */
+    setIsVip(User._isVIP(assets) || false);
+    setIsPro(User._isPRO(assets) || false);
+  }, [assets]);
+
+  /**
+   * 退出登录
+   * @method logout
+   */
+  const logout = useCallback(() => {
+    User.destroy()
+      .then(() => {
+        setIsLogin(false);
+
+        if (location.href.indexOf('dashboard') > 0) {
+          location.href = __Root;
+        }
+      })
+      .then(() => {
+        notification.success({
+          message: '成功',
+          description: '登出成功',
+          type: 'success',
+          duration: 1000,
+        });
+      });
+  }, []);
+
+  /**
+   * 用 useMemo 计算出layout的cls方便后续计算
    * @param basicLayoutCls
    */
   const basicLayoutCls = useMemo(
@@ -59,8 +207,11 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
    *
    * @param {Jx3BoxLayoutContextProps} contextValue
    */
-  const contextValue: Jx3BoxLayoutContextProps = useMemo(
+  const contextValue: Jx3BoxContextProps = useMemo(
     () => ({
+      client: getCurrentClient(),
+      changeJx3BoxClient,
+
       breadcrumbVisible,
       setBreadcrumbVisible,
 
@@ -78,16 +229,45 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
         show: () => setRightSidebarVisible(true),
         hide: () => setRightSidebarVisible(false),
       },
+
+      isLogin,
+      user,
+      isEditor,
+      assets,
+      unread,
+      panel,
+      isSuperAuthor,
+      links,
+      isVip,
+      isPro,
+      logout,
     }),
-    [hasLeftSidebar, leftSidebarVisible, rightSidebarVisible]
+    [
+      getCurrentClient,
+      breadcrumbVisible,
+      hasLeftSidebar,
+      leftSidebarVisible,
+      rightSidebarVisible,
+      isLogin,
+      user,
+      isEditor,
+      assets,
+      unread,
+      panel,
+      isSuperAuthor,
+      links,
+      isVip,
+      isPro,
+      logout,
+    ]
   );
 
   return (
-    <Jx3BoxLayoutContext.Provider value={contextValue}>
+    <Jx3BoxContext.Provider value={contextValue}>
       <section className={basicLayoutCls} {...rests}>
         {props.children}
       </section>
-    </Jx3BoxLayoutContext.Provider>
+    </Jx3BoxContext.Provider>
   );
 };
 
