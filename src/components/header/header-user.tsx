@@ -1,20 +1,17 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import { Dropdown, Tooltip, Menu } from 'antd';
 import { getLoginUrl, getRegisterUrl } from '@service/header';
 import { makeUsername, makeVipExpireTime } from '@utils/utils';
 import { getSuperAuthorIcon } from '@service/user';
-import {
-  Jx3BoxUserContextWrapper,
-  Jx3BoxUserContext,
-  Jx3BoxUserContextProps,
-} from '@components/provider';
+
 import Msg from '../../assets/header/msg.svg';
 import Add from '../../assets/header/add.svg';
+import { Jx3BoxContext } from '@components/provider';
 
-interface HeaderUserProps extends Jx3BoxUserContextProps {}
+interface HeaderUserProps {}
 
-const HeaderUser = (props: HeaderUserProps) => {
+const HeaderUser: React.FC<HeaderUserProps> = () => {
   const {
     isLogin,
     links,
@@ -27,7 +24,7 @@ const HeaderUser = (props: HeaderUserProps) => {
     panel,
     isEditor,
     logout,
-  } = props;
+  } = useContext(Jx3BoxContext);
 
   /**
    * 返回当前panel是否显示
@@ -168,16 +165,4 @@ const HeaderUser = (props: HeaderUserProps) => {
   );
 };
 
-/**
- * 用 Jx3BoxUserContextWrapper 包裹
- * @returns React.Component HeaderUserWithWrapper
- */
-const HeaderUserWithWrapper = () => (
-  <Jx3BoxUserContextWrapper>
-    <Jx3BoxUserContext.Consumer>
-      {({ ...userContextProps }) => <HeaderUser {...userContextProps} />}
-    </Jx3BoxUserContext.Consumer>
-  </Jx3BoxUserContextWrapper>
-);
-
-export default HeaderUserWithWrapper;
+export default HeaderUser;

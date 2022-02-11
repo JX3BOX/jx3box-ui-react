@@ -4,10 +4,10 @@ import { FormOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import { publishLink } from '@jx3box/jx3box-common/js/utils';
 import { feedback } from '@jx3box/jx3box-common/data/jx3box.json';
-import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
 import { isApp } from '@utils/utils';
 import Menu from '../../assets/bread/menu.svg';
 import BreadCrumbBE from './breadcrumb-backend';
+import { Jx3BoxContext } from '@components/provider';
 
 export interface BreadcrumbProps {
   /**
@@ -43,7 +43,7 @@ export interface BreadcrumbProps {
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = props => {
-  const { hasLeftSidebar, leftSiderHook, setBreadcrumbVisible } = useContext(Jx3BoxLayoutContext);
+  const { hasLeftSidebar, leftSiderHook, setBreadcrumbVisible } = useContext(Jx3BoxContext);
   const { toggle } = leftSiderHook;
   const {
     name,
