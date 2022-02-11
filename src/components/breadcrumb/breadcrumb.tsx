@@ -43,7 +43,8 @@ export interface BreadcrumbProps {
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = props => {
-  const { hasLeftSidebar, leftSiderHook, setBreadcrumbVisible } = useContext(Jx3BoxContext);
+  const { user, hasLeftSidebar, leftSidebarVisible, leftSiderHook, setBreadcrumbVisible } =
+    useContext(Jx3BoxContext);
   const { toggle } = leftSiderHook;
   const {
     name,
@@ -57,7 +58,6 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
   } = props;
 
   const [isOverlay, setIsOverlay] = useState(false);
-
   /**
    * 如果使用了 Breadcrumb
    * 则初始化的时候设置 setBreadcrumbVisible true
@@ -84,7 +84,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
    * useMemo 计算出最终的 breadcrumb classNames
    * @param breadcrumbCls
    */
-  const [breadcrumbCls, channelCls] = useMemo(
+  const [breadcrumbCls, channelCls, menuControlCls] = useMemo(
     () => [
       classNames('c-breadcrumb', {
         ['withoutLeft']: !hasLeftSidebar,
@@ -93,22 +93,33 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
       classNames('u-channel', {
         ['on']: hasLeftSidebar,
       }),
+      classNames('u-toggle', {
+        ['on']: leftSidebarVisible,
+      }),
     ],
-    [hasLeftSidebar, isOverlay, overlayEnable]
+    [hasLeftSidebar, leftSidebarVisible, isOverlay, overlayEnable]
   );
 
   /**
    * 组装 publishLink 跳转链接
    * @param onPublishLink
+   *
+   * 组装 onFeedbackLink 跳转链接
+   * @param onFeedbackLink
    */
-  const onPublishLink = useMemo(() => publishLink(slug), [publishLink, slug]);
+  const [onPublishLink, onFeedbackLink] = useMemo(
+    () => [publishLink(slug), feedback + '&subject=' + location.href + '?uid=' + user.uid],
+    [publishLink, slug, feedback, user]
+  );
 
   if (!isApp()) {
     return (
       <div className={breadcrumbCls}>
         {hasLeftSidebar && (
           <div className='u-menu' onClick={toggle}>
-            <Menu />
+            <div className={menuControlCls}>
+              <Menu />
+            </div>
           </div>
         )}
 
@@ -128,7 +139,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
           )}
 
           {feedbackEnable && (
-            <Button className='u-feedback' href={feedback} type='primary'>
+            <Button className='u-feedback' href={onFeedbackLink} type='primary'>
               <InfoCircleOutlined />
               <span>反馈</span>
             </Button>
