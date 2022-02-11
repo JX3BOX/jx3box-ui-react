@@ -9,7 +9,14 @@ export interface BasicLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const { className, ...rests } = props;
-  const [leftSidebarVisible, setLeftSidebarVisible] = useState(true);
+
+  /**
+   * 在初始化的时候设置为false
+   * 在 leftSidebar 的 useeffect 中设置为 true
+   *
+   * @param leftSidebarVisible
+   */
+  const [leftSidebarVisible, setLeftSidebarVisible] = useState(false);
 
   /**
    * 用useMemo计算出layout的cls方便后续计算

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { isApp } from '@utils/utils';
 import classNames from 'classnames';
 import Close from '../../assets/leftsidebar/close.svg';
@@ -19,7 +19,19 @@ export interface LeftSidebarProps {
 const LeftSidebar: React.FC<LeftSidebarProps> = props => {
   const { withoutBread = true } = props;
   const { leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxLayoutContext);
-  const { toggle } = leftSiderHook;
+  const { show, hide, toggle } = leftSiderHook;
+
+  /**
+   * 在初始化的时候设置为false
+   * 在 leftSidebar 的 useeffect 中设置为 true
+   * 卸载的时候隐藏掉
+   *
+   * @param leftSidebarVisible
+   */
+  useEffect(() => {
+    show();
+    return () => hide();
+  }, []);
 
   /**
    * 用 useMemo 计算出sidebar的最终classNames
