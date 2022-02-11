@@ -8,7 +8,7 @@ import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
  * @returns
  */
 const LayoutMain: React.FC<{}> = props => {
-  const { leftSidebarVisible } = useContext(Jx3BoxLayoutContext);
+  const { leftSidebarVisible, rightSidebarVisible } = useContext(Jx3BoxLayoutContext);
 
   /**
    * 使用 useMemo 计算最终的 mainClassNames
@@ -18,8 +18,9 @@ const LayoutMain: React.FC<{}> = props => {
     () =>
       classNames('c-main', {
         ['without-left']: !leftSidebarVisible,
+        ['without-right']: !rightSidebarVisible,
       }),
-    [leftSidebarVisible]
+    [leftSidebarVisible, rightSidebarVisible]
   );
 
   return <main className={mainCls}>{props.children}</main>;

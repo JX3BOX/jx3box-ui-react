@@ -1,11 +1,27 @@
+import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
 import { isApp } from '@utils/utils';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 export interface RightSidebarProps {
   children?: any;
 }
 
 const RightSidebar: React.FC<RightSidebarProps> = props => {
+  const { rightSiderHook } = useContext(Jx3BoxLayoutContext);
+  const { show, hide } = rightSiderHook;
+
+  /**
+   * 在初始化的时候设置为false
+   * 在 leftSidebar 的 useeffect 中设置为 true
+   * 卸载的时候隐藏掉
+   *
+   * @param leftSidebarVisible
+   */
+  useEffect(() => {
+    show();
+    return () => hide();
+  }, []);
+
   if (!isApp()) {
     return <aside className='c-sidebar-right c-sidebar'>{props.children}</aside>;
   }

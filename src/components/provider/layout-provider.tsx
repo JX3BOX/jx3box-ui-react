@@ -1,11 +1,31 @@
 import React from 'react';
 
 export interface Jx3BoxLayoutContextProps {
+  /**
+   * 左侧边栏是否显示
+   * @param leftSidebarVisible
+   *
+   * 左侧边栏 hook
+   * @param leftSiderHook
+   */
   leftSidebarVisible: boolean;
   leftSiderHook: {
     show: () => void;
     hide: () => void;
     toggle: () => void;
+  };
+
+  /**
+   * 右侧边栏是否显示
+   * @param rightSidebarVisible
+   *
+   * 右侧边栏 hook
+   * @param leftSiderHook
+   */
+  rightSidebarVisible: boolean;
+  rightSiderHook: {
+    show: () => void;
+    hide: () => void;
   };
 }
 
@@ -23,5 +43,11 @@ export const Jx3BoxLayoutContext = React.createContext<Jx3BoxLayoutContextProps>
     show: () => null,
     hide: () => null,
     toggle: () => null,
+  },
+
+  rightSidebarVisible: false,
+  rightSiderHook: {
+    show: () => null,
+    hide: () => null,
   },
 });
