@@ -5,8 +5,7 @@ import { isApp } from '@utils/utils';
 import Menu from '../../assets/bread/menu.svg';
 
 const Breadcrumb = () => {
-  const { leftSidebarVisible, leftSiderHook, setBreadcrumbVisible } =
-    useContext(Jx3BoxLayoutContext);
+  const { hasLeftSidebar, leftSiderHook, setBreadcrumbVisible } = useContext(Jx3BoxLayoutContext);
   const { toggle } = leftSiderHook;
 
   /**
@@ -25,7 +24,7 @@ const Breadcrumb = () => {
   const breadcrumbCls = useMemo(
     () =>
       classNames('c-breadcrumb', {
-        ['withoutLeft']: !leftSidebarVisible,
+        ['withoutLeft']: !hasLeftSidebar,
       }),
     []
   );
@@ -35,7 +34,7 @@ const Breadcrumb = () => {
   }
   return (
     <div className={breadcrumbCls}>
-      {leftSidebarVisible && (
+      {hasLeftSidebar && (
         <div className='u-menu' onClick={toggle}>
           <Menu />
         </div>
