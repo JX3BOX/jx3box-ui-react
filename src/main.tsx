@@ -6,7 +6,7 @@ import Header from '@components/header';
 import Footer from '@components/footer';
 import Layout from '@components/layout';
 
-const { LeftSidebar, RightSidebar } = Layout;
+const { LeftSidebar, RightSidebar, Main } = Layout;
 
 const LeftSidebarContent = (props: any) => {
   const { toggleLeftSidebar } = props;
@@ -25,10 +25,12 @@ const App = () => (
         <LeftSidebarContent />
       </LeftSidebar>
 
-      <RightSidebar>
-        <RightSidebarContext />
-      </RightSidebar>
-      <Footer />
+      <Main>
+        <RightSidebar>
+          <RightSidebarContext />
+        </RightSidebar>
+        <Footer />
+      </Main>
     </Layout>
   </>
 );
