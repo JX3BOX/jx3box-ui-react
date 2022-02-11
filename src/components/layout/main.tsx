@@ -2,6 +2,8 @@ import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import { Jx3BoxContext } from '@components/provider';
 
+interface LayoutMainProps {}
+
 /**
  * Layout 主显示容器 LayoutMain
  *
@@ -13,7 +15,7 @@ import { Jx3BoxContext } from '@components/provider';
  * @param props
  * @returns
  */
-const LayoutMain: React.FC<{}> = props => {
+const LayoutMain: React.FC<LayoutMainProps> = props => {
   const { breadcrumbVisible, leftSidebarVisible, rightSidebarVisible } = useContext(Jx3BoxContext);
 
   /**

@@ -2,9 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Jx3BoxContext } from '@components/provider';
 import { isApp } from '@utils/utils';
 
-export interface RightSidebarProps {
-  children?: any;
-}
+interface RightSidebarProps {}
 
 const RightSidebar: React.FC<RightSidebarProps> = props => {
   const { rightSiderHook } = useContext(Jx3BoxContext);
