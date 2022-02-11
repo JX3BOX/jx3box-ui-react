@@ -1,5 +1,5 @@
 import { __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
-import { $cms } from '@jx3box/jx3box-common/js/https.js';
+import { $cms } from '@jx3box/jx3box-common/js/request.js';
 
 /**
  * 返回传入的uid用户是否是超级作者
