@@ -7,7 +7,6 @@ import Menu from '../../assets/bread/menu.svg';
 const Breadcrumb = () => {
   const { hasLeftSidebar, leftSiderHook, setBreadcrumbVisible } = useContext(Jx3BoxLayoutContext);
   const { toggle } = leftSiderHook;
-
   /**
    * 如果使用了 Breadcrumb
    * 则初始化的时候设置 setBreadcrumbVisible true
@@ -26,7 +25,7 @@ const Breadcrumb = () => {
       classNames('c-breadcrumb', {
         ['withoutLeft']: !hasLeftSidebar,
       }),
-    []
+    [hasLeftSidebar]
   );
 
   if (isApp()) {

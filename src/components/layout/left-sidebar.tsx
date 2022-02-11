@@ -18,7 +18,13 @@ const LeftSidebar: React.FC<any> = props => {
    */
   useEffect(() => {
     setHasLeftSidebar(true);
-    show();
+
+    /**
+     * 在大于 1024 的屏幕初始化的时候才显示 LeftSidebar
+     */
+    if (window.innerWidth > 1024) {
+      show();
+    }
     return () => hide();
   }, []);
 

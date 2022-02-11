@@ -52,6 +52,11 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
 
   /**
    * 实现 Jx3BoxLayoutContextProps
+   *
+   * Fix calculate issue should add dependencies
+   *
+   * [hasLeftSidebar, leftSidebarVisible, rightSidebarVisible]
+   *
    * @param {Jx3BoxLayoutContextProps} contextValue
    */
   const contextValue: Jx3BoxLayoutContextProps = useMemo(
@@ -74,7 +79,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
         hide: () => setRightSidebarVisible(false),
       },
     }),
-    [leftSidebarVisible]
+    [hasLeftSidebar, leftSidebarVisible, rightSidebarVisible]
   );
 
   return (
