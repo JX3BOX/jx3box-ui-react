@@ -18,7 +18,7 @@ const customResolver = nodeResolve({
 const getPath = pathName => path.resolve(__dirname, pathName);
 
 module.exports = {
-  external: ['react', 'react-dom', 'antd', 'axios'],
+  external: ['react', 'react-dom', 'antd', '@ant-design/icons', 'axios'],
   /**
    * entry file
    * @param input

@@ -6,6 +6,7 @@ import Header from '@components/header';
 import Footer from '@components/footer';
 import Layout from '@components/layout';
 import Breadcrumb from '@components/breadcrumb';
+import Jx3Logo from './assets/jx3.svg';
 
 const { LeftSidebar, RightSidebar, Main } = Layout;
 
@@ -22,7 +23,9 @@ const App = () => (
   <>
     <Layout>
       <Header />
-      <Breadcrumb />
+      <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<Jx3Logo />}>
+        bread info
+      </Breadcrumb>
 
       <LeftSidebar>
         <LeftSidebarContent />
