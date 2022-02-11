@@ -18,7 +18,7 @@ const customResolver = nodeResolve({
 const getPath = pathName => path.resolve(__dirname, pathName);
 
 module.exports = {
-  // external: ['react', 'react-dom', 'antd', 'axios', '@jx3box/jx3box-common'],
+  external: ['react', 'react-dom', 'antd', 'axios'],
   /**
    * entry file
    * @param input

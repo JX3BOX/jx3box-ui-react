@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { $helper, $cms } from '@jx3box/jx3box-common/js/https';
+import { $helper, $cms } from '@jx3box/jx3box-common/js/request';
 import { __dataPath, __Root, __Links } from '@jx3box/jx3box-common/data/jx3box.json';
 import { CLIENT_TYPE_STD } from '@utils/constants';
 import { isSTDClient } from '@utils/utils';
