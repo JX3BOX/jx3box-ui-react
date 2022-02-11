@@ -6,11 +6,15 @@ import Header from '@components/header';
 import Footer from '@components/footer';
 import Layout from '@components/layout';
 
-const { LeftSidebar } = Layout;
+const { LeftSidebar, RightSidebar } = Layout;
 
 const LeftSidebarContent = (props: any) => {
   const { toggleLeftSidebar } = props;
   return <span onClick={toggleLeftSidebar}>hello</span>;
+};
+
+const RightSidebarContext = props => {
+  return <span>RightSidebarContext</span>;
 };
 
 const App = () => (
@@ -20,8 +24,12 @@ const App = () => (
       <LeftSidebar>
         <LeftSidebarContent />
       </LeftSidebar>
+
+      <RightSidebar>
+        <RightSidebarContext />
+      </RightSidebar>
+      <Footer />
     </Layout>
-    <Footer />
   </>
 );
 
