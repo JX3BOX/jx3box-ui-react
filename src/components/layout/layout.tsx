@@ -12,6 +12,14 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
 
   /**
    * 在初始化的时候设置为false
+   * 在 breadcrumb 的 useeffect 中设置为 true
+   *
+   * @param breadcrumbVisible
+   */
+  const [breadcrumbVisible, setBreadcrumbVisible] = useState(false);
+
+  /**
+   * 在初始化的时候设置为false
    * 在 leftSidebar 的 useeffect 中设置为 true
    *
    * @param leftSidebarVisible
@@ -44,6 +52,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
    */
   const contextValue: Jx3BoxLayoutContextProps = useMemo(
     () => ({
+      breadcrumbVisible,
+      setBreadcrumbVisible,
+
       leftSidebarVisible,
       leftSiderHook: {
         show: () => setLeftSidebarVisible(true),

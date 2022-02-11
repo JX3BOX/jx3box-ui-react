@@ -5,6 +5,7 @@ import './vite.less';
 import Header from '@components/header';
 import Footer from '@components/footer';
 import Layout from '@components/layout';
+import Breadcrumb from '@components/breadcrumb';
 
 const { LeftSidebar, RightSidebar, Main } = Layout;
 
@@ -19,8 +20,10 @@ const RightSidebarContext = props => {
 
 const App = () => (
   <>
-    <Header />
     <Layout>
+      <Header />
+      <Breadcrumb />
+
       <LeftSidebar>
         <LeftSidebarContent />
       </LeftSidebar>
