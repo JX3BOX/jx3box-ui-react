@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
+import { isApp } from '@utils/utils';
+import Menu from '../../assets/bread/menu.svg';
 
 const Breadcrumb = () => {
-  const { leftSidebarVisible, setBreadcrumbVisible } = useContext(Jx3BoxLayoutContext);
+  const { leftSidebarVisible, leftSiderHook, setBreadcrumbVisible } =
+    useContext(Jx3BoxLayoutContext);
+  const { toggle } = leftSiderHook;
 
   /**
    * 如果使用了 Breadcrumb
@@ -26,7 +30,18 @@ const Breadcrumb = () => {
     []
   );
 
-  return <div className={breadcrumbCls}>Breadcrumb</div>;
+  if (isApp()) {
+    return null;
+  }
+  return (
+    <div className={breadcrumbCls}>
+      {leftSidebarVisible && (
+        <div className='u-menu' onClick={toggle}>
+          <Menu />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Breadcrumb;
