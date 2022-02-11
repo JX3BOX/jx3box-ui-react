@@ -7,7 +7,7 @@ import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
 
 const LeftSidebar: React.FC<any> = props => {
   const { breadcrumbVisible, leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxLayoutContext);
-  const { show, hide, toggle } = leftSiderHook;
+  const { show, hide, toggle, setHasLeftSidebar } = leftSiderHook;
 
   /**
    * 在初始化的时候设置为false
@@ -17,6 +17,7 @@ const LeftSidebar: React.FC<any> = props => {
    * @param leftSidebarVisible
    */
   useEffect(() => {
+    setHasLeftSidebar(true);
     show();
     return () => hide();
   }, []);

@@ -19,11 +19,15 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const [breadcrumbVisible, setBreadcrumbVisible] = useState(false);
 
   /**
+   * 是否使用了 LeftSidebar
+   * @param hasLeftSidebar
+   *
    * 在初始化的时候设置为false
    * 在 leftSidebar 的 useeffect 中设置为 true
    *
    * @param leftSidebarVisible
    */
+  const [hasLeftSidebar, setHasLeftSidebar] = useState(false);
   const [leftSidebarVisible, setLeftSidebarVisible] = useState(false);
 
   /**
@@ -55,8 +59,10 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       breadcrumbVisible,
       setBreadcrumbVisible,
 
+      hasLeftSidebar,
       leftSidebarVisible,
       leftSiderHook: {
+        setHasLeftSidebar,
         show: () => setLeftSidebarVisible(true),
         hide: () => setLeftSidebarVisible(false),
         toggle: () => setLeftSidebarVisible(prevLeftSidebarVisible => !prevLeftSidebarVisible),

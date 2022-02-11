@@ -7,15 +7,26 @@ export interface Jx3BoxLayoutContextProps {
    */
   breadcrumbVisible: boolean;
   setBreadcrumbVisible: (visible: boolean) => void;
+
   /**
+   * 注意 hasLeftSidebar 和 leftSidebarVisible 的区别
+   *
+   * hasLeftSidebar = true 表示项目中使用了 LeftSidebar
+   * leftSidebarVisible = true 表示当前 LeftSidebar 处于显示状态
+   *
+   * 是否有 leftSidebar
+   * @param hasLeftSidebar
+   *
    * 左侧边栏是否显示
    * @param leftSidebarVisible
    *
    * 左侧边栏 hook
    * @param leftSiderHook
    */
+  hasLeftSidebar: boolean;
   leftSidebarVisible: boolean;
   leftSiderHook: {
+    setHasLeftSidebar: (hasSidebar: boolean) => void;
     show: () => void;
     hide: () => void;
     toggle: () => void;
@@ -47,8 +58,10 @@ export const Jx3BoxLayoutContext = React.createContext<Jx3BoxLayoutContextProps>
   breadcrumbVisible: false,
   setBreadcrumbVisible: () => {},
 
+  hasLeftSidebar: false,
   leftSidebarVisible: false,
   leftSiderHook: {
+    setHasLeftSidebar: () => null,
     show: () => null,
     hide: () => null,
     toggle: () => null,
