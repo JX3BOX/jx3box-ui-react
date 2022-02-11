@@ -112,6 +112,7 @@ const HeaderUser = (props: HeaderUserProps) => {
       vipCls,
       expireTime,
       isEditor,
+      panel,
       logout,
       makeUsername,
       getSuperAuthorIcon,

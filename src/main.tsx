@@ -4,7 +4,9 @@ import 'antd/dist/antd.css';
 import './vite.less';
 import Header from '@components/header';
 import Footer from '@components/footer';
-import LeftSidebar from '@components/sidebar/left-sidebar';
+import Layout from '@components/layout';
+
+const { LeftSidebar } = Layout;
 
 const LeftSidebarContent = (props: any) => {
   const { toggleLeftSidebar } = props;
@@ -14,9 +16,11 @@ const LeftSidebarContent = (props: any) => {
 const App = () => (
   <>
     <Header />
-    <LeftSidebar>
-      <LeftSidebarContent />
-    </LeftSidebar>
+    <Layout>
+      <LeftSidebar>
+        <LeftSidebarContent />
+      </LeftSidebar>
+    </Layout>
     <Footer />
   </>
 );

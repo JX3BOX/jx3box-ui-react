@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import User from '@jx3box/jx3box-common/js/user';
 import { confirmClientVersion, getClientUrl, getCurrentClient } from '@utils/utils';
 import { notification } from 'antd';
@@ -132,7 +132,7 @@ export const Jx3BoxUserContextWrapper = ({ children }: any) => {
   const [user] = useState(User.getInfo());
   const [isEditor, setIsEditor] = useState(USER_EDITOR_INIT);
   const [unread, setUnread] = useState(USER_MSG_UNREAD_INIT);
-  const [panel, setPanel] = useState(USER_PANEL_INIT);
+  const [panel, setPanel] = useState(USER_PANEL_INIT as any[]);
   const [assets, setAssets] = useState(USER_ASSETS_INIT);
   const [isSuperAuthor, setIsSuperAuthor] = useState(USER_SUPER_AUTHOR_INIT);
   const [links, setLinks] = useState(USER_LINKS_INIT as UserLinks);
@@ -154,9 +154,11 @@ export const Jx3BoxUserContextWrapper = ({ children }: any) => {
    * @method checkMsg
    */
   const loadPanel = useCallback(() => {
-    getMenu('panel').then(result => {
-      setPanel(result.data?.data?.val || panelData);
-    });
+    getMenu('panel')
+      .then(result => {
+        setPanel(result.data?.data?.val || panelData);
+      })
+      .catch(() => setPanel(panelData));
   }, [getMenu]);
 
   /**
@@ -239,23 +241,22 @@ export const Jx3BoxUserContextWrapper = ({ children }: any) => {
       });
   }, []);
 
-  return (
-    <Jx3BoxUserContext.Provider
-      value={{
-        isLogin,
-        user,
-        isEditor,
-        assets,
-        unread,
-        panel,
-        isSuperAuthor,
-        links,
-        isVip,
-        isPro,
-        logout,
-      }}
-    >
-      {children}
-    </Jx3BoxUserContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      isLogin,
+      user,
+      isEditor,
+      assets,
+      unread,
+      panel,
+      isSuperAuthor,
+      links,
+      isVip,
+      isPro,
+      logout,
+    }),
+    [isLogin, user, isEditor, assets, unread, panel, isSuperAuthor, links, isVip, isPro, logout]
   );
+
+  return <Jx3BoxUserContext.Provider value={contextValue}>{children}</Jx3BoxUserContext.Provider>;
 };
