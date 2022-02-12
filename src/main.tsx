@@ -33,7 +33,7 @@ const App = () => (
       </LeftSidebar>
 
       <Main>
-        <Thx postId={36942} postType='tool' />
+        <Thx postId={36942} postType='tool' userId={59236} />
 
         <RightSidebar>
           <RightSidebarContext />

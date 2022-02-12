@@ -1,16 +1,107 @@
-import React from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { Jx3BoxContext } from '@components/provider';
+import './thanks.less';
+import ThanksCoin, { ThanksCoinProps, makeThanksCoinProps } from './thanks-coin';
 import ThanksFavorite from './thanks-favorite';
-import ThanksLike, { ThanksLikeProps } from './thanks-like';
+import ThanksLike, { makeThanksLikeProps, ThanksLikeProps } from './thanks-like';
+import { getBoxcoinStatus, getPostBoxcoinConfig } from '@service/thanks';
 
-export type ThanksProps = {} & ThanksLikeProps;
+export interface ThanksContextValue {
+  adminPoints: Array<number>;
+  adminLeft: number;
+  userPoints: Array<number>;
+  setUserPoints: React.Dispatch<React.SetStateAction<Array<number>>>;
+  userLeft: number;
+  setUserLeft: React.Dispatch<React.SetStateAction<number>>;
+}
 
+export type ThanksProps = {} & ThanksLikeProps & ThanksCoinProps;
+
+/**
+ * Thanks 组件
+ *
+ * @todo
+ * 当用户打赏的时候 前端应该直接渲染
+ * 所以前端在打赏之后在本地直接添加一条打赏记录
+ *
+ * 把打赏模块的 hook 写在 Thanks component 中
+ * 在分发到各个需要的子模块
+ *
+ * @param props
+ * @returns
+ */
 const Thanks: React.FC<ThanksProps> = props => {
-  const { postId, postType } = props;
+  const { postType } = props;
+  const { isLogin } = useContext(Jx3BoxContext);
+
+  /**
+   * 盒币开关
+   * @param coinEnable
+   *
+   * 管理员点数
+   * @param adminPoints
+   *
+   * 管理员剩余
+   * @param adminLeft
+   *
+   * 用户点数
+   * @param userPoints
+   *
+   * 用户剩余
+   * @param userLeft
+   */
+  const [coinEnable, setCoinEnable] = useState(false);
+  const [adminPoints, setAdminPoints] = useState([100]);
+  const [adminLeft, setAdminLeft] = useState(0);
+  const [userPoints, setUserPoints] = useState([100]);
+  const [userLeft, setUserLeft] = useState(0);
+
+  useEffect(() => {
+    /**
+     * 请求后端是否开启了盒币开关
+     * @method getBoxcoinStatus
+     */
+    getBoxcoinStatus().then(result => {
+      setCoinEnable(!!~~result.data.data.val);
+    });
+
+    if (isLogin) {
+      getPostBoxcoinConfig(postType).then(result => {
+        setAdminPoints(result.data.data.limit.admin_points || [10, 1000]);
+        setAdminLeft(result.data.data.asManagerBoxCoinRemain || 0);
+        setUserPoints(result.data.data.limit.user_points || [10, 1000]);
+        setUserLeft(result.data.data.asUserBoxCoinRemain || 0);
+      });
+    }
+  }, [isLogin, postType]);
+
+  const [thanksCoinProps, likeAndFavoriteProps] = useMemo(
+    () => [makeThanksCoinProps(props), makeThanksLikeProps(props)],
+    [props, makeThanksLikeProps, makeThanksCoinProps]
+  );
+
+  /**
+   * Thanks 组件内部通用的上下文
+   * @param thanksContextValue
+   */
+  const thanksContextValue: ThanksContextValue = useMemo(
+    () => ({
+      adminPoints,
+      adminLeft,
+      userPoints,
+      setUserPoints,
+      userLeft,
+      setUserLeft,
+    }),
+    [adminPoints, adminLeft, userPoints, userLeft]
+  );
+
   return (
     <div className='w-thx'>
       <div className='w-thx-panel'>
-        <ThanksLike postId={postId} postType={postType} />
-        <ThanksFavorite postId={postId} postType={postType} />
+        <ThanksLike {...likeAndFavoriteProps} />
+        <ThanksFavorite {...likeAndFavoriteProps} />
+        {coinEnable && <ThanksCoin {...thanksCoinProps} thanksContextValue={thanksContextValue} />}
       </div>
 
       <div className='w-thx-copyright'>

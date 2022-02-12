@@ -1,3 +1,4 @@
+export const tuple = <T extends string[]>(...args: T) => args;
 export interface HeaderNavData {
   key: string;
   link: string;

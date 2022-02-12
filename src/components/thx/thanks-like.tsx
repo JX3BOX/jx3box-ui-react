@@ -9,6 +9,11 @@ export interface ThanksLikeProps {
   postId: string | number;
 }
 
+export const makeThanksLikeProps = (props): ThanksLikeProps => ({
+  postType: props.postType,
+  postId: props.postId,
+});
+
 const ThanksLike: React.FC<ThanksLikeProps> = props => {
   const { postId, postType } = props;
   const [likeCount, setLikeCount] = useState(0);

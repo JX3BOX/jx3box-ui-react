@@ -5,7 +5,6 @@ import User from '@jx3box/jx3box-common/js/user';
 import { Jx3BoxContext } from '@components/provider';
 import { addFavorite, cancelFavorite, hasFavorite } from '@service/favorite';
 import StarIcon from '../../assets/widget/star.svg';
-import './thanks.less';
 
 export interface ThanksFavoriteProps {
   postType: string | number;
