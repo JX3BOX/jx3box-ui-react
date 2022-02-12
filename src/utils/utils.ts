@@ -1,9 +1,11 @@
+import { __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
 import {
   CLIENT_TYPE_STD,
   CLIENT_TYPE_ORIGIN,
   APPLICATION_AGENT,
   CLIENT_ORIGIN_URL,
   CLIENT_STD_URL,
+  SHARE_LINKS,
 } from './constants';
 
 /**
@@ -106,4 +108,62 @@ export const makeVipExpireTime = (time: any): number => {
   const vipExpireTime = +new Date(time);
   const currentTime = +new Date();
   return parseInt(`${vipExpireTime - currentTime / 86400000}`);
+};
+
+/**
+ * 返回 location
+ * @returns
+ */
+export const getLocation = () => document.location;
+
+/**
+ * 返回 title
+ * @param meta
+ * @returns
+ */
+export const getTitle = (meta?: any) => meta?.title || document.title;
+
+export const getSummary = (meta?: any) => meta?.summary || '';
+
+export const getMetaValue = (meta, target, defaultValue = '') =>
+  meta && meta[target] ? meta[target] : defaultValue;
+
+export const getPic = (meta?: any) => meta?.banner || __imgPath + 'image/common/logo.png';
+
+export const getWeiboShareLink = (meta?: any) =>
+  SHARE_LINKS.weibo + `url=${getLocation()}` + `&title=${getTitle(meta)}` + `&pic=${getPic(meta)}`;
+
+export const getQZoneShareLink = (meta?: any) =>
+  SHARE_LINKS.qzone +
+  `url=${getLocation()}` +
+  `&title=${getTitle(meta)}` +
+  '&sharesource=qzone' +
+  `&summary=${getSummary(meta)}` +
+  `&desc=${getMetaValue(meta, 'desc', '')}` +
+  `&pics=${getPic(meta)}`;
+
+export const getQQShareLink = (meta?: any) =>
+  SHARE_LINKS.qq + `url=${getLocation()}` + `&title=${getTitle(meta)}` + `&pics=${getPic(meta)}`;
+
+export const getTiebaShareLink = (meta?: any) =>
+  SHARE_LINKS.tieba +
+  `url=${getLocation()}` +
+  `&title=${getTitle(meta)}` +
+  `&summary=${getSummary(meta)}` +
+  `&desc=${getMetaValue(meta, 'desc', '')}` +
+  `&pic=${getPic(meta)}`;
+
+export const getShareLink = (shareType: string) => {
+  switch (shareType) {
+    case 'qzone':
+      return getQZoneShareLink;
+    case 'qq':
+      return getQQShareLink;
+    case 'weibo':
+      return getWeiboShareLink;
+    case 'tieba':
+      return getTiebaShareLink;
+    default:
+      return () => '';
+  }
 };

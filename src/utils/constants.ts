@@ -1,4 +1,8 @@
 import { Jx3BoxUserAssets } from './types';
+import Weibo from '../assets/widget/weibo.svg';
+import QQ from '../assets/widget/qq.svg';
+import Qzone from '../assets/widget/qzone.svg';
+import TieBA from '../assets/widget/tieba.svg';
 
 /**
  * 客户端版本
@@ -45,4 +49,35 @@ export const USER_ASSETS_INIT: Jx3BoxUserAssets = {
   pro_expire_date: '2022-03-07T00:00:00+08:00',
   pro_total_day: 366,
   was_pro: 0,
+};
+
+export const ThanksShareList = [
+  {
+    name: '微博',
+    key: 'weibo',
+    Icon: Weibo,
+  },
+  {
+    name: 'QQ',
+    key: 'qq',
+    Icon: QQ,
+  },
+  {
+    name: 'QQ空间',
+    key: 'qzone',
+    Icon: Qzone,
+  },
+  {
+    name: '贴吧',
+    key: 'tieba',
+    Icon: TieBA,
+  },
+];
+
+export const SHARE_LINKS = {
+  qzone: 'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?',
+  qq: 'http://connect.qq.com/widget/shareqq/index.html?',
+  wechat: '',
+  weibo: 'https://service.weibo.com/share/share.php?',
+  tieba: 'http://tieba.baidu.com/f/commit/share/openShareApi?',
 };
