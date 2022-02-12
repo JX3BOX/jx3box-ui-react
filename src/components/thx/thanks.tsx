@@ -1,4 +1,5 @@
 import React from 'react';
+import ThanksFavorite from './thanks-favorite';
 import ThanksLike, { ThanksLikeProps } from './thanks-like';
 
 export type ThanksProps = {} & ThanksLikeProps;
@@ -9,6 +10,7 @@ const Thanks: React.FC<ThanksProps> = props => {
     <div className='w-thx'>
       <div className='w-thx-panel'>
         <ThanksLike postId={postId} postType={postType} />
+        <ThanksFavorite postId={postId} postType={postType} />
       </div>
 
       <div className='w-thx-copyright'>
