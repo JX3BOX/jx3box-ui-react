@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import qs from 'qs';
 import { $helper } from '@jx3box/jx3box-common/js/request';
-import { handleNotificationPromise } from './interceptors';
+import { getInterceptor } from './interceptors';
 
 /**
  * 返回传入post的收藏数
@@ -10,7 +10,7 @@ import { handleNotificationPromise } from './interceptors';
  * @returns
  */
 export const hasFavorite = (postType: string | number, postId: string | number) =>
-  handleNotificationPromise(
+  getInterceptor('helper')(
     $helper().get('/api/post/favorite/favorited', {
       params: {
         post_type: postType,
@@ -26,7 +26,7 @@ export const hasFavorite = (postType: string | number, postId: string | number) 
  * @returns
  */
 export const addFavorite = (postType: string | number, postId: string | number) =>
-  handleNotificationPromise(
+  getInterceptor('helper')(
     $helper().post(
       '/api/post/favorite',
       qs.stringify({
@@ -44,7 +44,7 @@ export const addFavorite = (postType: string | number, postId: string | number) 
  * @returns
  */
 export const cancelFavorite = (postType: string | number, postId: string | number) =>
-  handleNotificationPromise(
+  getInterceptor('helper')(
     $helper().post(
       '/api/post/favorite',
       qs.stringify({
