@@ -6,7 +6,7 @@ import Header from '@components/header';
 import Footer from '@components/footer';
 import Layout from '@components/layout';
 import Breadcrumb from '@components/breadcrumb';
-import Like from '@components/like';
+import Thx from '@components/thx';
 import Jx3Logo from './assets/jx3.svg';
 
 const { LeftSidebar, RightSidebar, Main } = Layout;
@@ -21,27 +21,25 @@ const RightSidebarContext = props => {
 };
 
 const App = () => (
-  <>
-    <Layout>
-      <Header />
-      <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<Jx3Logo />}>
-        bread info
-      </Breadcrumb>
+  <Layout>
+    <Header />
+    <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<Jx3Logo />}>
+      bread info
+    </Breadcrumb>
 
-      <LeftSidebar>
-        <LeftSidebarContent />
-      </LeftSidebar>
+    <LeftSidebar>
+      <LeftSidebarContent />
+    </LeftSidebar>
 
-      <Main>
-        <Like postId={23865} postType='bbs' />
+    <Main>
+      <Thx postId={31129} postType='tool' userId={59236} />
 
-        <RightSidebar>
-          <RightSidebarContext />
-        </RightSidebar>
-        <Footer />
-      </Main>
-    </Layout>
-  </>
+      <RightSidebar>
+        <RightSidebarContext />
+      </RightSidebar>
+      <Footer />
+    </Main>
+  </Layout>
 );
 
 ReactDOM.render(

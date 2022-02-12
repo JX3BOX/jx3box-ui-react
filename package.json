@@ -32,7 +32,8 @@
     "@ant-design/icons": "^4.7.0",
     "@jx3box/jx3box-common": "^7.0.2",
     "axios": "^0.25.0",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "qrcode.react": "^1.0.1"
   },
   "peerDependencies": {
     "antd": ">=4.0.0",

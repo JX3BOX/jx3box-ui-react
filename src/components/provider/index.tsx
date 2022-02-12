@@ -103,6 +103,8 @@ interface Jx3BoxUserContextProps {
    */
   isVip: boolean;
   isPro: boolean;
+
+  isSuperAdmin: boolean;
 }
 
 interface ChangeJx3BoxClientInterface {
@@ -172,4 +174,5 @@ export const Jx3BoxContext = React.createContext<Jx3BoxContextProps>({
   links: {} as any,
   isVip: false,
   isPro: false,
+  isSuperAdmin: false,
 });

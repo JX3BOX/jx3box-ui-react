@@ -76,6 +76,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
    *
    * 跳链相关
    * @param links
+   *
+   * 是否是超级会员
+   * @param isSuperAdmin
    */
   const [isLogin, setIsLogin] = useState(User.isLogin());
   const [user] = useState(User.getInfo());
@@ -87,6 +90,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const [links, setLinks] = useState(USER_LINKS_INIT as UserLinks);
   const [isVip, setIsVip] = useState(USER_VIP_INIT);
   const [isPro, setIsPro] = useState(USER_PRO_INIT);
+  const [isSuperAdmin] = useState(User.isSuperAdmin());
 
   /**
    * 查看用户是否有未读消息
@@ -241,6 +245,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       isVip,
       isPro,
       logout,
+      isSuperAdmin,
     }),
     [
       getCurrentClient,
@@ -259,6 +264,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       isVip,
       isPro,
       logout,
+      isSuperAdmin,
     ]
   );
 
