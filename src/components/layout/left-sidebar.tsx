@@ -3,23 +3,11 @@ import { isApp } from '@utils/utils';
 import classNames from 'classnames';
 import Close from '../../assets/leftsidebar/close.svg';
 import Open from '../../assets/leftsidebar/open.svg';
-import { Jx3BoxLayoutContext } from '@components/provider/layout-provider';
+import { Jx3BoxContext } from '@components/provider';
 
-/**
- *
- * @param withoutBread 是否有面包屑组件和计算sidebar高度有关
- * @export
- * @interface LeftSidebarProps
- */
-export interface LeftSidebarProps {
-  withoutBread?: boolean;
-  children?: any;
-}
-
-const LeftSidebar: React.FC<LeftSidebarProps> = props => {
-  const { withoutBread = true } = props;
-  const { leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxLayoutContext);
-  const { show, hide, toggle } = leftSiderHook;
+const LeftSidebar: React.FC<any> = props => {
+  const { breadcrumbVisible, leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxContext);
+  const { show, hide, toggle, setHasLeftSidebar } = leftSiderHook;
 
   /**
    * 在初始化的时候设置为false
@@ -29,7 +17,14 @@ const LeftSidebar: React.FC<LeftSidebarProps> = props => {
    * @param leftSidebarVisible
    */
   useEffect(() => {
-    show();
+    setHasLeftSidebar(true);
+
+    /**
+     * 在大于 1024 的屏幕初始化的时候才显示 LeftSidebar
+     */
+    if (window.innerWidth > 1024) {
+      show();
+    }
     return () => hide();
   }, []);
 
@@ -42,9 +37,9 @@ const LeftSidebar: React.FC<LeftSidebarProps> = props => {
       classNames('c-sidebar-left', 'c-sidebar', {
         ['isopen']: leftSidebarVisible,
         ['isclose']: !leftSidebarVisible,
-        ['without-bread']: withoutBread,
+        ['without-bread']: !breadcrumbVisible,
       }),
-    [leftSidebarVisible, withoutBread]
+    [leftSidebarVisible, breadcrumbVisible]
   );
 
   if (!isApp()) {

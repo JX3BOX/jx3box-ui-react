@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { Menu, Dropdown } from 'antd';
 import { makeHeaderNavData, checkNavHasChildren } from '@utils/utils';
@@ -10,7 +10,6 @@ import { Jx3BoxContext } from '@components/provider';
 export interface HeaderNavLinkProps {
   item: HeaderNavData;
   className?: string;
-  children?: ReactNode;
 }
 
 /**
@@ -27,7 +26,7 @@ const checkCurrentNavFocus = (link: string) => location.pathname.includes(link);
  * @param {HeaderNavLinkProps} { item, className, ...rest }
  * @return {*}
  */
-const HeaderNavLink = ({ item, className, children, ...rest }: HeaderNavLinkProps) => {
+const HeaderNavLink: React.FC<HeaderNavLinkProps> = ({ item, className, children, ...rest }) => {
   const { client } = useContext(Jx3BoxContext);
 
   /**
