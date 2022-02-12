@@ -8,6 +8,7 @@ import { getPostBoxcoinRecords, recoveryBoxcoin } from '@service/thanks';
 import { ThanksRecordItem } from '@utils/types';
 import Gift from '../../assets/widget/gift.svg';
 import GiftAdmin from '../../assets/widget/admin_gift.svg';
+import { thanksRecordEventEmitter, thanksRecordEvnetKey } from './thanks';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -23,6 +24,21 @@ const ThanksRecord: React.FC<ThanksRecordProps> = props => {
   const [recordList, setRecordList] = useState([] as ThanksRecordItem[]);
   const [recordListTotal, setRecordListTotal] = useState(0);
   const [pageField, setPageField] = useState({ pageSize: 12, pageIndex: 1 });
+
+  useEffect(() => {
+    /**
+     * 当打赏的时候触发本地打赏记录更新
+     * @method updateRecordHandle
+     */
+    const updateRecordHandle = recordItem => {
+      setRecordList(prevRecordList => [recordItem, ...prevRecordList]);
+    };
+
+    thanksRecordEventEmitter.on(thanksRecordEvnetKey, updateRecordHandle);
+    return () => {
+      thanksRecordEventEmitter.off(thanksRecordEvnetKey, updateRecordHandle);
+    };
+  }, []);
 
   /**
    * 请求打赏列表

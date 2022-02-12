@@ -3,8 +3,9 @@ import { Tooltip, Modal, Space, Radio, Input, notification } from 'antd';
 import User from '@jx3box/jx3box-common/js/user';
 import { Jx3BoxContext } from '@components/provider';
 import { getChargeLink, rewardBoxcoin } from '@service/thanks';
-import { ThanksContextValue } from './thanks';
+import { ThanksContextValue, thanksRecordEventEmitter, thanksRecordEvnetKey } from './thanks';
 import Heart from '../../assets/widget/heart1.svg';
+
 export interface ThanksCoinProps {
   postType: string | number;
   postId: string | number;
@@ -73,14 +74,30 @@ const ThanksCoin: React.FC<ThanksCoinProps & { thanksContextValue: ThanksContext
           /**
            * 大赏之后
            * 扣除用户相应额度
+           * @method setUserLeft
+           *
            * 将新增的打赏记录同步出去
+           * @method thanksRecordEventEmitter
            */
           setUserLeft(prevUserLeft => prevUserLeft - coinValue);
+          /* eslint-disable camelcase */
+          const localCacheRecord = {
+            count: coinValue,
+            remark: coinRemark,
+            is_user_gift: 0,
+            operate_user_id: user.uid,
+            created_at: Date.now(),
+            ext_operate_user_info: {
+              avatar: user.avatar_origin,
+              display_name: user.name,
+            },
+          };
+          thanksRecordEventEmitter.emit(thanksRecordEvnetKey, localCacheRecord);
         })
         .finally(() => {
           hideCoinModal();
         });
-    }, [postType, postId, userId, coinValue, coinRemark, client, setUserLeft, hideCoinModal]);
+    }, [postType, postId, user, userId, coinValue, coinRemark, client, setUserLeft, hideCoinModal]);
 
     /**
      * 如果用户处于未登录状态则跳转到登录
@@ -137,7 +154,10 @@ const ThanksCoin: React.FC<ThanksCoinProps & { thanksContextValue: ThanksContext
           title='投币打赏'
           onOk={submitReward}
           onCancel={hideCoinModal}
-          okButtonProps={{ size: 'large', disabled: !disabledSubmitToken }}
+          okButtonProps={{
+            size: 'large',
+            disabled: !disabledSubmitToken,
+          }}
           cancelButtonProps={{ size: 'large' }}
         >
           <div className='w-boxcoin-user-content'>

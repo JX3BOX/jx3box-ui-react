@@ -6,6 +6,10 @@ import ThanksLike, { makeThanksLikeProps, ThanksLikeProps } from './thanks-like'
 import { getBoxcoinStatus, getPostBoxcoinConfig } from '@service/thanks';
 import ThanksShare from './thanks-share';
 import ThanksRecord from './thanks-record';
+import EventEmitter from '@utils/event-emitter';
+
+export const thanksRecordEvnetKey = 'updateRecord';
+export const thanksRecordEventEmitter = new EventEmitter();
 
 export interface ThanksContextValue {
   adminPoints: Array<number>;
