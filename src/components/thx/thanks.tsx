@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Jx3BoxContext } from '@components/provider';
-import './thanks.less';
 import ThanksCoin, { ThanksCoinProps, makeThanksCoinProps } from './thanks-coin';
 import ThanksFavorite from './thanks-favorite';
 import ThanksLike, { makeThanksLikeProps, ThanksLikeProps } from './thanks-like';
 import { getBoxcoinStatus, getPostBoxcoinConfig } from '@service/thanks';
+import ThanksShare from './thanks-share';
 
 export interface ThanksContextValue {
   adminPoints: Array<number>;
@@ -75,7 +75,7 @@ const Thanks: React.FC<ThanksProps> = props => {
     }
   }, [isLogin, postType]);
 
-  const [thanksCoinProps, likeAndFavoriteProps] = useMemo(
+  const [thanksCoinProps, baseThanksProps] = useMemo(
     () => [makeThanksCoinProps(props), makeThanksLikeProps(props)],
     [props, makeThanksLikeProps, makeThanksCoinProps]
   );
@@ -99,9 +99,10 @@ const Thanks: React.FC<ThanksProps> = props => {
   return (
     <div className='w-thx'>
       <div className='w-thx-panel'>
-        <ThanksLike {...likeAndFavoriteProps} />
-        <ThanksFavorite {...likeAndFavoriteProps} />
+        <ThanksLike {...baseThanksProps} />
+        <ThanksFavorite {...baseThanksProps} />
         {coinEnable && <ThanksCoin {...thanksCoinProps} thanksContextValue={thanksContextValue} />}
+        <ThanksShare {...baseThanksProps} />
       </div>
 
       <div className='w-thx-copyright'>
