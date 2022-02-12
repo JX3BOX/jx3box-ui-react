@@ -21,27 +21,25 @@ const RightSidebarContext = props => {
 };
 
 const App = () => (
-  <>
-    <Layout>
-      <Header />
-      <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<Jx3Logo />}>
-        bread info
-      </Breadcrumb>
+  <Layout>
+    <Header />
+    <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<Jx3Logo />}>
+      bread info
+    </Breadcrumb>
 
-      <LeftSidebar>
-        <LeftSidebarContent />
-      </LeftSidebar>
+    <LeftSidebar>
+      <LeftSidebarContent />
+    </LeftSidebar>
 
-      <Main>
-        <Thx postId={36942} postType='tool' userId={59236} />
+    <Main>
+      <Thx postId={31129} postType='tool' userId={59236} />
 
-        <RightSidebar>
-          <RightSidebarContext />
-        </RightSidebar>
-        <Footer />
-      </Main>
-    </Layout>
-  </>
+      <RightSidebar>
+        <RightSidebarContext />
+      </RightSidebar>
+      <Footer />
+    </Main>
+  </Layout>
 );
 
 ReactDOM.render(

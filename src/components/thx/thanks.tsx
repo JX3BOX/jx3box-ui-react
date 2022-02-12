@@ -5,6 +5,7 @@ import ThanksFavorite from './thanks-favorite';
 import ThanksLike, { makeThanksLikeProps, ThanksLikeProps } from './thanks-like';
 import { getBoxcoinStatus, getPostBoxcoinConfig } from '@service/thanks';
 import ThanksShare from './thanks-share';
+import ThanksRecord from './thanks-record';
 
 export interface ThanksContextValue {
   adminPoints: Array<number>;
@@ -103,6 +104,10 @@ const Thanks: React.FC<ThanksProps> = props => {
         <ThanksFavorite {...baseThanksProps} />
         {coinEnable && <ThanksCoin {...thanksCoinProps} thanksContextValue={thanksContextValue} />}
         <ThanksShare {...baseThanksProps} />
+      </div>
+
+      <div className='w-thx-records'>
+        <ThanksRecord {...baseThanksProps} />
       </div>
 
       <div className='w-thx-copyright'>

@@ -36,3 +36,37 @@ export interface UserLinks {
   profile: string;
   homepage: string;
 }
+
+export interface ThanksRecordItem {
+  action_type: number;
+  count: number;
+  effect_log_id: number;
+  article_id: string;
+  created_at: string;
+  deleted_at: string;
+  ext_operate_user_info: {
+    id: number;
+    status: number;
+    group: number;
+    display_name: string;
+    avatar: string;
+    email: string;
+  };
+  ext_user_info: {
+    id: number;
+    status: number;
+    group: number;
+    display_name: string;
+    avatar: string;
+    email: string;
+  };
+  has_deleted: number;
+  id: number;
+  is_user_gift: number;
+  operate_user_id: number;
+  post_id: number;
+  user_id: number;
+  pay_order_id: string;
+  post_type: string;
+  remark: string;
+}
