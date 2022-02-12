@@ -5,6 +5,32 @@ import { getCurrentClient } from '@utils/utils';
 import { __Links, __Root, __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
 import { Jx3BoxUser, Jx3BoxUserAssets, UserLinks } from '@utils/types';
 
+/**
+ * ===========================================================================
+ * ===========================================================================
+ *
+ * Jx3BoxContext Usage
+ *
+ * Jx3BoxLayoutContextProps 与 layout 有关
+ * 涉及计算容器宽度 容器高度等
+ * 因为 左 - 中 - 右 的设计布局
+ * 有一定的耦合如果手动指定的话会比较麻烦
+ * 所以把这部分的逻辑抽离出来直接使用
+ *
+ * Jx3BoxUserContextProps 与用户有关
+ * 可以直接使用用户的一些数据
+ * 后续可以自己添加
+ * 因为我们的项目在初始化的时候就已经可以拿到
+ * 用户大部分数据了 [登录登出均是跳链]
+ * 所以目前来看没有数据错误的风险
+ *
+ * Jx3BoxContext
+ * 剩下的是 client 和 changeJx3BoxClient
+ * client 是魔盒版本[正式版 - 怀旧服版]
+ * changeJx3BoxClient(targetVersion) 传入要切换的版本即可跳转
+ * 因为也是跳链行为所以初始化拿到的值即是最终值
+ */
+
 interface Jx3BoxLayoutContextProps {
   /**
    * 新增 breadcrumbVisible 是否显示面包屑
