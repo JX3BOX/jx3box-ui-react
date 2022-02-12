@@ -4,12 +4,12 @@ import { Tooltip } from 'antd';
 import { postStat, getStat } from '@jx3box/jx3box-common/js/stat';
 import LikeIcon from '../../assets/widget/like2.svg';
 
-export interface LikeProps {
+export interface ThanksLikeProps {
   postType: string | number;
   postId: string | number;
 }
 
-const Like: React.FC<LikeProps> = props => {
+const ThanksLike: React.FC<ThanksLikeProps> = props => {
   const { postId, postType } = props;
   const [likeCount, setLikeCount] = useState(0);
   const [alreadyLiked, setAlreadyLiked] = useState(false);
@@ -63,4 +63,4 @@ const Like: React.FC<LikeProps> = props => {
   );
 };
 
-export default Like;
+export default ThanksLike;

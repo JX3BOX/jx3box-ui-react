@@ -1,11 +1,15 @@
 import React from 'react';
+import ThanksLike, { ThanksLikeProps } from './thanks-like';
 
-export interface ThanksProps {}
+export type ThanksProps = {} & ThanksLikeProps;
 
-const Thanks: React.FC<ThanksProps> = () => {
+const Thanks: React.FC<ThanksProps> = props => {
+  const { postId, postType } = props;
   return (
     <div className='w-thx'>
-      <div className='w-thx-panel'></div>
+      <div className='w-thx-panel'>
+        <ThanksLike postId={postId} postType={postType} />
+      </div>
 
       <div className='w-thx-copyright'>
         &copy;

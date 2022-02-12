@@ -6,7 +6,6 @@ import Header from '@components/header';
 import Footer from '@components/footer';
 import Layout from '@components/layout';
 import Breadcrumb from '@components/breadcrumb';
-import Like from '@components/like';
 import Thx from '@components/thx';
 import Jx3Logo from './assets/jx3.svg';
 
@@ -34,8 +33,7 @@ const App = () => (
       </LeftSidebar>
 
       <Main>
-        <Like postId={23865} postType='bbs' />
-        <Thx />
+        <Thx postId={23865} postType='bbs' />
 
         <RightSidebar>
           <RightSidebarContext />
