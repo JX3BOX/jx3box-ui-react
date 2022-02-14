@@ -59,4 +59,6 @@ const LeftSidebar: React.FC<any> = props => {
   return null;
 };
 
+LeftSidebar.displayName = 'LeftSidebar';
+
 export default LeftSidebar;
