@@ -35,4 +35,6 @@ const LayoutMain: React.FC<LayoutMainProps> = props => {
   return <main className={mainCls}>{props.children}</main>;
 };
 
+LayoutMain.displayName = 'LayoutMain';
+
 export default LayoutMain;
