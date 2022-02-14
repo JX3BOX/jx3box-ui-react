@@ -26,4 +26,6 @@ const RightSidebar: React.FC<RightSidebarProps> = props => {
   return null;
 };
 
+RightSidebar.displayName = 'RightSidebar';
+
 export default RightSidebar;
