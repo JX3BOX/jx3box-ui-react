@@ -45,10 +45,7 @@ const LeftSidebar: React.FC<any> = props => {
   if (!isApp()) {
     return (
       <aside className={sidebarCls}>
-        <div className='c-sidebar-left-inner'>
-          {props.children &&
-            React.cloneElement(props.children, { leftSidebarVisible, toggleLeftSidebar: toggle })}
-        </div>
+        <div className='c-sidebar-left-inner'>{props.children}</div>
 
         <span title='收起侧边栏' className='c-sidebar-left-toggle' onClick={toggle}>
           {leftSidebarVisible ? <Close /> : <Open />}
