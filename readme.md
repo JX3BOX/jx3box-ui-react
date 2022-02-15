@@ -193,7 +193,6 @@ export default () => (
 `StoryBook` 查看组件库
 
 ```code
-npm run dev
 npm run storybook
 ```
 
