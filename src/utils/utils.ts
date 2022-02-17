@@ -167,3 +167,15 @@ export const getShareLink = (shareType: string) => {
       return () => '';
   }
 };
+
+/**
+ * 返回当前数据是否满足渲染条件
+ * @param item
+ * @param client
+ * @returns
+ */
+export const filterHeaderBoxDataByClient = (item, client) =>
+  item.status && (item.client === client || item.client === 'all');
+
+export const getTarget = val =>
+  window.innerWidth < 768 || val?.startsWith('/') ? '_self' : '_blank';
