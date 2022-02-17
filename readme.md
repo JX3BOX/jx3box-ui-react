@@ -150,9 +150,9 @@ export default () => (
 
 | props | detail | type | default |
 | :---- | :---- | :---- | :---- |
-| postType | 文章类型 | string | number | - |
-| postId | 文章id | string | number | - |
-| userId | 发布文章的作者id | string | number | - |
+| postType | 文章类型 | string or number | - |
+| postId | 文章id | string or number | - |
+| userId | 发布文章的作者id | string or number | - |
 
 ## Header
 
