@@ -1,31 +1,30 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@components/*": ["src/components/*"],
-        "@service/*": ["src/service/*"],
-        "@data/*": ["src/data/*"],
-        "@utils/*": ["src/utils/*"],
-        "@types": ["./src/types.ts"]
-      },
-      "strictNullChecks": true,
-      "module": "esnext",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "experimentalDecorators": true,
-      "jsx": "react",
-      "noUnusedParameters": true,
-      "noUnusedLocals": true,
-      "noImplicitAny": false,
-      "target": "es6",
-      "lib": ["dom", "es2017"],
-      "skipLibCheck": true,
-      "allowSyntheticDefaultImports": true,
-      "declaration": true,
-      "resolveJsonModule": true
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@service/*": ["src/service/*"],
+      "@data/*": ["src/data/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types": ["./src/types.ts"]
     },
-    "exclude": ["node_modules", "build", "src/stories"],
-    "references": [{ "path": "./tsconfig.node.json" }]
-    // "include": ["src/**/*"],
-  }
-  
+    "strictNullChecks": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": false,
+    "target": "es6",
+    "lib": ["dom", "es2017"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", "build", "src/stories"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+  // "include": ["src/**/*"],
+}
