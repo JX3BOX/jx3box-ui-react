@@ -3,17 +3,8 @@ import classNames from 'classnames';
 import { notification } from 'antd';
 import User from '@jx3box/jx3box-common/js/user';
 import { __Links, __Root, __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
-import {
-  USER_ASSETS_INIT,
-  USER_EDITOR_INIT,
-  USER_LINKS_INIT,
-  USER_MSG_UNREAD_INIT,
-  USER_PANEL_INIT,
-  USER_PRO_INIT,
-  USER_SUPER_AUTHOR_INIT,
-  USER_VIP_INIT,
-} from '@utils/constants';
-import { UserLinks } from '@utils/types';
+import { USER_ASSETS_INIT } from '@utils/constants';
+import { Jx3BoxUserAssets, UserLinks } from '@utils/types';
 import { getHomepageUrl, getMenu, getMsg } from '@service/header';
 import { getSuperAuthor } from '@service/user';
 import panelData from '@data/panel.json';
@@ -82,14 +73,14 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
    */
   const [isLogin, setIsLogin] = useState(User.isLogin());
   const [user] = useState(User.getInfo());
-  const [isEditor, setIsEditor] = useState(USER_EDITOR_INIT);
-  const [unread, setUnread] = useState(USER_MSG_UNREAD_INIT);
-  const [panel, setPanel] = useState(USER_PANEL_INIT as any[]);
-  const [assets, setAssets] = useState(USER_ASSETS_INIT);
-  const [isSuperAuthor, setIsSuperAuthor] = useState(USER_SUPER_AUTHOR_INIT);
-  const [links, setLinks] = useState(USER_LINKS_INIT as UserLinks);
-  const [isVip, setIsVip] = useState(USER_VIP_INIT);
-  const [isPro, setIsPro] = useState(USER_PRO_INIT);
+  const [isEditor, setIsEditor] = useState(false);
+  const [unread, setUnread] = useState(false);
+  const [panel, setPanel] = useState([] as any[]);
+  const [assets, setAssets] = useState(USER_ASSETS_INIT as Jx3BoxUserAssets);
+  const [isSuperAuthor, setIsSuperAuthor] = useState(false);
+  const [links, setLinks] = useState({} as UserLinks);
+  const [isVip, setIsVip] = useState(false);
+  const [isPro, setIsPro] = useState(false);
   const [isSuperAdmin] = useState(User.isSuperAdmin());
 
   /**

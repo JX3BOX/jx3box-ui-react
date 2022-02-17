@@ -34,13 +34,6 @@ export const CLIENT_SWITCH_DATA = [
  */
 export const APPLICATION_AGENT = 'jx3boxApp';
 
-export const USER_EDITOR_INIT = false;
-export const USER_MSG_UNREAD_INIT = false;
-export const USER_PANEL_INIT = [];
-export const USER_SUPER_AUTHOR_INIT = false;
-export const USER_LINKS_INIT = {} as any;
-export const USER_VIP_INIT = false;
-export const USER_PRO_INIT = false;
 /* eslint-disable camelcase */
 export const USER_ASSETS_INIT: Jx3BoxUserAssets = {
   expire_date: '2022-03-07T00:00:00+08:00',
