@@ -70,3 +70,18 @@ export interface ThanksRecordItem {
   post_type: string;
   remark: string;
 }
+
+export interface BoxDataItem {
+  img: string;
+  abbr: string;
+  href: string;
+  mark: string;
+  name: string;
+  uuid: string;
+  hover: string;
+  client: string;
+  markcls: string;
+  lf: boolean;
+  status: boolean;
+  hasMark: boolean;
+}
