@@ -19,7 +19,7 @@ const HeaderLogo = () => {
    * 魔盒首页 menu 开关相关逻辑
    * @param menuVisible
    */
-  const [menuVisible, setMenuVisible] = useState(true);
+  const [menuVisible, setMenuVisible] = useState(false);
   const closeMenu = useCallback(() => setMenuVisible(false), []);
   const onMenuVisibleChange = useCallback(nextVisible => {
     setMenuVisible(nextVisible);
