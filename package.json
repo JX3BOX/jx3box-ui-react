@@ -1,5 +1,5 @@
 {
-  "name": "jx3box-ui-react",
+  "name": "@jx3box/jx3box-ui-react",
   "version": "0.0.1",
   "description": "Jx3Box-UI react version",
   "main": "build/index.js",
