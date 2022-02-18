@@ -25,14 +25,14 @@ jobs:
           npm install
           npm run build
 
-      # - name: OSS
-      #   uses: manyuanrong/setup-ossutil@v2.0
-      #   with:
-      #     endpoint: "oss-cn-hangzhou.aliyuncs.com"
-      #     access-key-id: ${{secrets.AccessKey_ID}}
-      #     access-key-secret: ${{secrets.Access_Key_Secret}}
-      # - run: ossutil cp -rf build oss://jx3box/static/jx3box-ui-react
-      # - run: ossutil cp -rf build oss://jx3box-www/jx3box-ui-react
+      - name: OSS
+        uses: manyuanrong/setup-ossutil@v2.0
+        with:
+          endpoint: "oss-cn-hangzhou.aliyuncs.com"
+          access-key-id: ${{secrets.AccessKey_ID}}
+          access-key-secret: ${{secrets.Access_Key_Secret}}
+      - run: ossutil cp -rf build oss://jx3box/static/jx3box-ui-react
+      - run: ossutil cp -rf build oss://jx3box-www/jx3box-ui-react
 
   publish-npm:
     needs: build
