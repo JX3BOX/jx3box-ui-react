@@ -1,6 +1,6 @@
 {
   "name": "@jx3box/jx3box-ui-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Jx3Box-UI react version",
   "main": "build/index.js",
   "typings": "build/src/index.d.ts",
