@@ -18,7 +18,7 @@ const customResolver = nodeResolve({
 const getPath = pathName => path.resolve(__dirname, pathName);
 
 module.exports = {
-  external: ['react', 'react-dom', 'antd', '@ant-design/icons', 'axios'],
+  external: ['react', 'react-dom'],
   /**
    * entry file
    * @param input
@@ -74,14 +74,14 @@ module.exports = {
      * A plugin convert commonjs to es6
      * @plugin @rollup/plugin-commonjs
      */
-    commonjs(),
+    commonjs({ esmExternals: true }),
 
     /**
      * A plugin resolve node_modules
      * @plugin @rollup/plugin-node-resolve
      * https://www.npmjs.com/package/@rollup/plugin-node-resolve
      */
-    nodeResolve(),
+    nodeResolve({ browser: true }),
 
     /**
      * Add json import support
