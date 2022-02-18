@@ -7,6 +7,7 @@ import {
   CLIENT_STD_URL,
   SHARE_LINKS,
 } from './constants';
+import { HeaderNavData } from './types';
 
 /**
  * 获取当前页面Client版本
@@ -60,27 +61,49 @@ export const confirmClientVersion = (currentClient: string, targetClient: string
   currentClient === targetClient;
 
 /**
- * 我看不懂是什么操作
+ * 返回不带 parentKey 的 item
+ * @param item
+ * @returns
+ */
+const filterFirstClassNavData = (item: HeaderNavData) => !item.parentKey;
+/**
+ * 返回带 parentKey 的 item
+ * @param item
+ * @returns
+ */
+const filterChildNavData = (item: HeaderNavData) => item.parentKey;
+
+const insertIntoParentNav = (parent: HeaderNavData, item: HeaderNavData) => {
+  if (!parent.children) {
+    parent.children = [item];
+    return;
+  }
+  parent.children.push(item);
+};
+
+/**
+ * 过滤一遍 nav data
  * @param nav
  * @returns
  */
-export const makeHeaderNavData = nav => {
-  const finalNav = nav.filter(d => !d.parentKey);
-  const navChildren = nav.filter(c => c.parentKey);
+export const makeHeaderNavData = (navData: HeaderNavData[]) => {
+  /**
+   * 获取没有parentkey的navdata
+   * @param firstClassNav
+   */
+  const firstClassNavData = navData.filter(filterFirstClassNavData);
+  const childNavData = navData.filter(filterChildNavData);
 
-  navChildren.forEach(child => {
-    const parentKey = child.parentKey;
-    const parent = finalNav.find(n => n.key === parentKey);
+  childNavData.forEach(childNavItem => {
+    const currentParentkey = childNavItem.parentKey;
+    const currentParent = firstClassNavData.find(parentItem => parentItem.key === currentParentkey);
 
-    if (parent) {
-      if (!parent.children) {
-        parent.children = [];
-      }
-      parent.children.push(child);
+    if (currentParent) {
+      insertIntoParentNav(currentParent, childNavItem);
     }
   });
 
-  return finalNav;
+  return firstClassNavData;
 };
 
 /**
