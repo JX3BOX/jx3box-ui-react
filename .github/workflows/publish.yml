@@ -18,7 +18,7 @@ jobs:
       - name: Install && Build
         run: |
           npm install
-          npm run header
+          npm run build
 
       - name: OSS
         uses: manyuanrong/setup-ossutil@v2.0
