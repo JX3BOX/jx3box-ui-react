@@ -11,3 +11,12 @@ tsconfig.json
 /src
 /dist
 /bundle
+.storybook
+/rollup
+.eslintignore
+.eslintrc.js
+.prettierrc
+index.html
+tsconfig.node.json
+vite.config.ts
+.github
