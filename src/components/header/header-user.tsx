@@ -1,13 +1,13 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import { Dropdown, Tooltip, Menu } from 'antd';
-import { getLoginUrl, getRegisterUrl } from '@service/header';
-import { makeUsername, makeVipExpireTime } from '@utils/utils';
-import { getSuperAuthorIcon } from '@service/user';
+import { getLoginUrl, getRegisterUrl } from '../../service/header';
+import { makeUsername, makeVipExpireTime } from '../../utils/utils';
+import { getSuperAuthorIcon } from '../../service/user';
 
 import Msg from '../../assets/header/msg.svg';
 import Add from '../../assets/header/add.svg';
-import { Jx3BoxContext } from '@components/provider';
+import { Jx3BoxContext } from '../provider';
 
 interface HeaderUserProps {}
 

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useMemo } from 'react';
-import { isApp } from '@utils/utils';
 import classNames from 'classnames';
+import { isApp } from '../../utils/utils';
 import Close from '../../assets/leftsidebar/close.svg';
 import Open from '../../assets/leftsidebar/open.svg';
-import { Jx3BoxContext } from '@components/provider';
+import { Jx3BoxContext } from '../provider';
 
 const LeftSidebar: React.FC<any> = props => {
   const { breadcrumbVisible, leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxContext);

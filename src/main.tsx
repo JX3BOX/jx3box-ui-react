@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './vite.less';
-import Header from '@components/header';
-import Footer from '@components/footer';
-import Layout from '@components/layout';
-import Breadcrumb from '@components/breadcrumb';
-import Thx from '@components/thx';
+import { Header, Footer, Layout, Breadcrumb, Thx } from './index.esm';
 import Jx3Logo from './assets/jx3.svg';
 
 const { LeftSidebar, RightSidebar, Main } = Layout;
@@ -23,7 +18,7 @@ const RightSidebarContext = props => {
 const App = () => (
   <Layout>
     <Header />
-    <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<Jx3Logo />}>
+    <Breadcrumb name='频道名称' slug='slug' root='/slug' logo={<img src={Jx3Logo} />}>
       bread info
     </Breadcrumb>
 

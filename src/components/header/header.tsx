@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplicationChecker from '@components/hook/application-checker';
+import ApplicationChecker from '../hook/application-checker';
 import HeaderLogo from './header-logo';
 import HeaderSearch from './header-search';
 import HeaderSwitch from './header-switch';

@@ -1,5 +1,5 @@
-import { getBreadcrumb } from '@service/breadcrumb';
 import React, { useEffect, useState } from 'react';
+import { getBreadcrumb } from '../../service/breadcrumb';
 
 export interface BreadCrumbBEProps {
   name: string;

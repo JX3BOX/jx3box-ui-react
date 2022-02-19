@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import User from '@jx3box/jx3box-common/js/user';
-import { getCurrentClient } from '@utils/utils';
+import { getCurrentClient } from '../../utils/utils';
 import { __Links, __Root, __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
-import { Jx3BoxUser, Jx3BoxUserAssets, UserLinks } from '@utils/types';
+import { Jx3BoxUser, Jx3BoxUserAssets, UserLinks } from '../../utils/types';
 
 /**
  * ===========================================================================

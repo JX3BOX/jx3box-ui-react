@@ -8,7 +8,6 @@
 tslint.json
 tsconfig.json
 *.log
-/src
 /dist
 /bundle
 .storybook
