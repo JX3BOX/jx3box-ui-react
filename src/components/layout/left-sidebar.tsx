@@ -48,7 +48,7 @@ const LeftSidebar: React.FC<any> = props => {
         <div className='c-sidebar-left-inner'>{props.children}</div>
 
         <span title='收起侧边栏' className='c-sidebar-left-toggle' onClick={toggle}>
-          {leftSidebarVisible ? <Close /> : <Open />}
+          {leftSidebarVisible ? <img src={Close} /> : <img src={Open} />}
         </span>
       </aside>
     );

@@ -112,11 +112,11 @@ const ThanksRecord: React.FC<ThanksRecordProps> = props => {
                   <span className='u-meta u-action'>
                     {item.is_user_gift ? (
                       <i title='打赏'>
-                        <Gift />
+                        <img src={Gift} />
                       </i>
                     ) : (
                       <i title='品鉴'>
-                        <GiftAdmin />
+                        <img src={GiftAdmin} />
                       </i>
                     )}
                   </span>

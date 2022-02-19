@@ -139,7 +139,7 @@ const HeaderUser: React.FC<HeaderUserProps> = () => {
           <a className='u-msg' href={links.msg}>
             <i className='u-icon u-icon-msg'>
               {unread && <i className='u-pop' />}
-              <Msg />
+              <img src={Msg} />
             </i>
           </a>
         </Tooltip>
@@ -148,7 +148,7 @@ const HeaderUser: React.FC<HeaderUserProps> = () => {
       <div className='c-header-panel' id='c-header-panel'>
         <Tooltip title='发布中心' placement='bottom'>
           <a className='u-post' href={links.publish}>
-            <Add className='u-add' />
+            <img className='u-add' src={Add} />
           </a>
         </Tooltip>
       </div>

@@ -24,7 +24,7 @@ const HeaderSearch = () => {
           <input type='hidden' name='client' value={client} />
 
           <i className='u-btn'>
-            <SearchKeySlash />
+            <img src={SearchKeySlash} />
           </i>
         </form>
       </div>
