@@ -2,8 +2,34 @@ import React, { useCallback } from 'react';
 import { Popover, Tooltip } from 'antd';
 import QRCode from 'qrcode.react';
 import ShareIcon from '../../assets/widget/share2.svg';
-import { ThanksShareList } from '@utils/constants';
 import { getShareLink } from '@utils/utils';
+import Weibo from '../../assets/widget/weibo.svg';
+import QQ from '../../assets/widget/qq.svg';
+import Qzone from '../../assets/widget/qzone.svg';
+import TieBA from '../../assets/widget/tieba.svg';
+
+const ThanksShareList = [
+  {
+    name: '微博',
+    key: 'weibo',
+    Icon: Weibo,
+  },
+  {
+    name: 'QQ',
+    key: 'qq',
+    Icon: QQ,
+  },
+  {
+    name: 'QQ空间',
+    key: 'qzone',
+    Icon: Qzone,
+  },
+  {
+    name: '贴吧',
+    key: 'tieba',
+    Icon: TieBA,
+  },
+];
 
 export interface ThanksShareProps {
   postType: string | number;
@@ -42,7 +68,7 @@ const ThanksShare: React.FC<ThanksShareProps> = props => {
             className='u-share2-item'
             title='分享'
           >
-            <item.Icon />
+            <img src={item.Icon} />
             <div className='u-share2-name'>{item.name}</div>
           </div>
         ))}
@@ -65,7 +91,7 @@ const ThanksShare: React.FC<ThanksShareProps> = props => {
       >
         <Tooltip placement='top' className='item' title='分享'>
           <div className='u-icon'>
-            <ShareIcon />
+            <img src={ShareIcon} />
           </div>
         </Tooltip>
       </Popover>

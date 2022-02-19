@@ -11,7 +11,7 @@ const Footer: React.FC<{}> = () => {
     <footer className='c-footer' id='c-footer'>
       <div className='c-footer-left'>
         <span className='u-flag'>
-          <Flag />
+          <img src={Flag} />
         </span>
 
         <a href='https://beian.miit.gov.cn/' rel='noreferrer' className='u-beian' target='_blank'>

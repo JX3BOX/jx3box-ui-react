@@ -56,7 +56,7 @@ const ThanksLike: React.FC<ThanksLikeProps> = props => {
     <div className={likeCls} onClick={addLike}>
       <Tooltip title='点赞' placement='top'>
         <div>
-          <LikeIcon />
+          <img src={LikeIcon} />
           {likeCount !== 0 && (
             <span className='u-count' v-if='count'>
               {likeCount}

@@ -118,7 +118,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
         {hasLeftSidebar && (
           <div className='u-menu' onClick={toggle}>
             <div className={menuControlCls}>
-              <Menu />
+              <img src={Menu} />
             </div>
           </div>
         )}

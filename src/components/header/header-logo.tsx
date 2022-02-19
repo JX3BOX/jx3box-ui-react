@@ -86,7 +86,7 @@ const HeaderLogo = () => {
     >
       <div className='c-header-logo' id='c-header-logo' title='点击展开魔盒矩阵'>
         <i className='u-pic'>
-          <Logo />
+          <img src={Logo} />
         </i>
         <span className='u-txt'>魔盒</span>
       </div>

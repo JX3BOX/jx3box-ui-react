@@ -80,7 +80,7 @@ const ThanksFavorite: React.FC<ThanksFavoriteProps> = props => {
     <div className={likeCls} onClick={doFavoriteClickHandle}>
       <Tooltip title={favoriteText} placement='top'>
         <div>
-          <StarIcon />
+          <img src={StarIcon} />
           {favoriteCount > 0 && <span className='u-count'>{favoriteCount}</span>}
         </div>
       </Tooltip>

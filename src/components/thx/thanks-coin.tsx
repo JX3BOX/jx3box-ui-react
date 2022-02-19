@@ -142,7 +142,7 @@ const ThanksCoin: React.FC<ThanksCoinProps & { thanksContextValue: ThanksContext
       <div className='w-boxcoin-user'>
         <Tooltip title='投币' placement='top'>
           <div className='w-boxcoin-block' onClick={tryOpenCoinModal}>
-            <Heart />
+            <img src={Heart} />
           </div>
         </Tooltip>
 

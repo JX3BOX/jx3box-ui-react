@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "rollup -c rollup/rollup.config.js ",
-    "storybook": "npm run build && start-storybook -p 6006",
+    "storybook": "rollup -c rollup/rollup.config.js --watch && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "@babel/core": "^7.17.0",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-image": "^2.1.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@storybook/addon-actions": "^6.4.18",
@@ -72,14 +73,11 @@
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-react-svg": "^3.0.3",
     "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
     "typescript": "^4.5.5",
     "typings": "^2.1.1",
-    "vite": "^2.8.0",
-    "vite-plugin-react-svg": "^0.2.0",
-    "vite-plugin-svg-react": "^1.0.3"
+    "vite": "^2.8.0"
   }
 }
