@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { Jx3BoxContext } from '@components/provider';
-import { isApp } from '@utils/utils';
+import { Jx3BoxContext } from '../provider';
+import { isApp } from '../../utils/utils';
 
 interface RightSidebarProps {}
 

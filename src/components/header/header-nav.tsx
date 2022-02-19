@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Menu, Dropdown } from 'antd';
-import { makeHeaderNavData, checkNavHasChildren } from '@utils/utils';
-import { getMenu } from '@service/header';
-import navData from '@data/nav.json';
-import { HeaderNavData } from '@utils/types';
-import { Jx3BoxContext } from '@components/provider';
+import navData from '../../data/nav.json';
+import { HeaderNavData } from '../../utils/types';
+import { Jx3BoxContext } from '../provider';
+import { checkNavHasChildren, makeHeaderNavData } from '../../utils/utils';
+import { getMenu } from '../../service/header';
 
 export interface HeaderNavLinkProps {
   item: HeaderNavData;

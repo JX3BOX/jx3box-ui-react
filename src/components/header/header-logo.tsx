@@ -1,13 +1,13 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Dropdown } from 'antd';
-import { Jx3BoxContext } from '@components/provider';
 import { __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
 import Logo from '../../assets/header/logo.svg';
 import boxData from '../../data/box.json';
 import HeaderSearch from './header-search';
-import { filterHeaderBoxDataByClient, getTarget } from '@utils/utils';
-import { getMenu } from '@service/header';
-import { BoxDataItem } from '@utils/types';
+import { Jx3BoxContext } from '../provider';
+import { BoxDataItem } from '../../utils/types';
+import { filterHeaderBoxDataByClient, getTarget } from '../../utils/utils';
+import { getMenu } from '../../service/header';
 
 const homeIcon = __imgPath + 'image/box/home.svg';
 

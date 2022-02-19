@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isApp } from '@utils/utils';
+import { isApp } from '../../utils/utils';
 
 const ENV_APPLICATION = 'env-app';
 

@@ -4,14 +4,14 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   // 🌸:alias @ for ./src
-  resolve: {
-    alias: [
-      { find: '@components', replacement: '/src/components' },
-      { find: '@service', replacement: '/src/service' },
-      { find: '@data', replacement: '/src/data' },
-      { find: '@utils', replacement: '/src/utils' },
-    ],
-  },
+  // resolve: {
+  //   alias: [
+  //     { find: '@components', replacement: '/src/components' },
+  //     { find: '@service', replacement: '/src/service' },
+  //     { find: '@data', replacement: '/src/data' },
+  //     { find: '@utils', replacement: '/src/utils' },
+  //   ],
+  // },
 
   // ❄️:css mixins & global vars
   css: {

@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { notification } from 'antd';
 import User from '@jx3box/jx3box-common/js/user';
 import { __Links, __Root, __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
-import { USER_ASSETS_INIT } from '@utils/constants';
-import { Jx3BoxUserAssets, UserLinks } from '@utils/types';
-import { getHomepageUrl, getMenu, getMsg } from '@service/header';
-import { getSuperAuthor } from '@service/user';
-import panelData from '@data/panel.json';
-import { Jx3BoxContext, Jx3BoxContextProps } from '@components/provider';
-import { confirmClientVersion, getClientUrl, getCurrentClient } from '@utils/utils';
+import { USER_ASSETS_INIT } from '../../utils/constants';
+import { Jx3BoxUserAssets, UserLinks } from '../../utils/types';
+import { getHomepageUrl, getMenu, getMsg } from '../../service/header';
+import { getSuperAuthor } from '../../service/user';
+import panelData from '../../data/panel.json';
+import { Jx3BoxContext, Jx3BoxContextProps } from '../../components/provider';
+import { confirmClientVersion, getClientUrl, getCurrentClient } from '../../utils/utils';
 
 const changeJx3BoxClient = (targetClient: string) => {
   const currentClient = getCurrentClient();

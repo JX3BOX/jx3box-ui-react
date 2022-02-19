@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { notification } from 'antd';
-import { tuple } from '@utils/types';
+import { tuple } from '../utils/types';
 
 const InterceptorTypes = tuple('helper', 'pay');
 export type InterceptorType = typeof InterceptorTypes[number];

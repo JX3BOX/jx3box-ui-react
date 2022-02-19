@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import classNames from 'classnames';
-import { Jx3BoxContext } from '@components/provider';
-import { CLIENT_SWITCH_DATA, CLIENT_TYPE_ORIGIN } from '@utils/constants';
+import { Jx3BoxContext } from '../provider';
+import { CLIENT_SWITCH_DATA, CLIENT_TYPE_ORIGIN } from '../../utils/constants';
 
 /**
  * <HeaderSwitch/>

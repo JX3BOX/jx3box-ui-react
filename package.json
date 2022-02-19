@@ -3,7 +3,7 @@
   "version": "0.0.7",
   "description": "Jx3Box-UI react version",
   "main": "build/index.js",
-  "module": "build/index.esm.js",
+  "module": "src/index.esm.ts",
   "typings": "build/src/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

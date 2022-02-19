@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
-import { Jx3BoxContext } from '@components/provider';
+import { Jx3BoxContext } from '../provider';
 
 interface LayoutMainProps {}
 

@@ -6,9 +6,9 @@ const typescript = require('rollup-plugin-typescript2');
 const commonjs = require('@rollup/plugin-commonjs');
 const alias = require('@rollup/plugin-alias');
 const styles = require('rollup-plugin-styles');
-const svg = require('rollup-plugin-react-svg');
 const json = require('@rollup/plugin-json');
 const { terser } = require('rollup-plugin-terser');
+const images = require('@rollup/plugin-image');
 // const { eslint } = require('rollup-plugin-eslint');
 
 const customResolver = nodeResolve({
@@ -34,12 +34,12 @@ module.exports = {
       file: 'build/index.js',
       format: 'cjs',
     },
-    {
-      file: 'build/index.min.js',
-      format: 'cjs',
-      plugins: [terser()],
-    },
-    { file: 'build/index.esm.js', format: 'esm' },
+    // {
+    //   file: 'build/index.min.js',
+    //   format: 'cjs',
+    //   plugins: [terser()],
+    // },
+    // { file: 'build/index.esm.js', format: 'esm' },
   ],
 
   /**
@@ -99,27 +99,17 @@ module.exports = {
      * Add image assets support
      * @plugin @rollup/plugin-image
      */
-    // images(),
+    images(),
 
-    /**
-     * Add rollup inline react svg plugin
-     * @plugin rollup-plugin-react-svg
-     */
-    svg({
-      svgo: {
-        plugins: [{ convertPathData: { noSpaceAfterFlags: false } }, { removeViewBox: false }],
-      },
-    }),
-
-    alias({
-      entries: [
-        { find: '@components', replacement: '../src/components' },
-        { find: '@service', replacement: '../src/service' },
-        { find: '@data', replacement: '../src/data' },
-        { find: '@utils', replacement: '../src/utils' },
-      ],
-      customResolver,
-    }),
+    // alias({
+    //   entries: [
+    //     { find: '@components', replacement: '../src/components' },
+    //     { find: '@service', replacement: '../src/service' },
+    //     { find: '@data', replacement: '../src/data' },
+    //     { find: '@utils', replacement: '../src/utils' },
+    //   ],
+    //   customResolver,
+    // }),
 
     // eslint(),
   ],

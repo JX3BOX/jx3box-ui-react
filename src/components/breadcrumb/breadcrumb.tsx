@@ -4,10 +4,10 @@ import { FormOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import { publishLink } from '@jx3box/jx3box-common/js/utils';
 import { feedback } from '@jx3box/jx3box-common/data/jx3box.json';
-import { isApp } from '@utils/utils';
 import Menu from '../../assets/bread/menu.svg';
 import BreadCrumbBE from './breadcrumb-backend';
-import { Jx3BoxContext } from '@components/provider';
+import { isApp } from '../../utils/utils';
+import { Jx3BoxContext } from '../provider';
 
 export interface BreadcrumbProps {
   /**
