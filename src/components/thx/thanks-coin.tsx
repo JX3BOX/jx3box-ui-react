@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Tooltip, Modal, Space, Radio, Input, notification } from 'antd';
 import User from '@jx3box/jx3box-common/js/user';
-import { Jx3BoxContext } from '@components/provider';
-import { getChargeLink, rewardBoxcoin } from '@service/thanks';
+import { Jx3BoxContext } from '../provider';
+import { getChargeLink, rewardBoxcoin } from '../../service/thanks';
 import { ThanksContextValue, thanksRecordEventEmitter, thanksRecordEvnetKey } from './thanks';
 import Heart from '../../assets/widget/heart1.svg';
 

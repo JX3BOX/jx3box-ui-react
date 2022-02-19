@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Popover, Tooltip } from 'antd';
 import QRCode from 'qrcode.react';
 import ShareIcon from '../../assets/widget/share2.svg';
-import { getShareLink } from '@utils/utils';
+import { getShareLink } from '../../utils/utils';
 import Weibo from '../../assets/widget/weibo.svg';
 import QQ from '../../assets/widget/qq.svg';
 import Qzone from '../../assets/widget/qzone.svg';

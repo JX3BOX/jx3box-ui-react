@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@service/*": ["src/service/*"],
-      "@data/*": ["src/data/*"],
-      "@utils/*": ["src/utils/*"],
-      "@types": ["./src/types.ts"]
-    },
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@components/*": ["src/components/*"],
+    //   "@service/*": ["src/service/*"],
+    //   "@data/*": ["src/data/*"],
+    //   "@utils/*": ["src/utils/*"],
+    //   "@types": ["./src/types.ts"]
+    // },
     "strictNullChecks": true,
     "module": "esnext",
     "moduleResolution": "node",

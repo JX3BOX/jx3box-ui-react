@@ -1,7 +1,7 @@
 import React from 'react';
-import { isApp } from '@utils/utils';
-import { getAboutUrl, getFeedbackUrl } from '@service/footer';
+import { getAboutUrl, getFeedbackUrl } from '../../service/footer';
 import Flag from '../../assets/footer/china.svg';
+import { isApp } from '../../utils/utils';
 
 const Footer: React.FC<{}> = () => {
   if (isApp()) {

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { Jx3BoxContext } from '@components/provider';
+import { Jx3BoxContext } from '../provider';
 import ThanksCoin, { ThanksCoinProps, makeThanksCoinProps } from './thanks-coin';
 import ThanksFavorite from './thanks-favorite';
 import ThanksLike, { makeThanksLikeProps, ThanksLikeProps } from './thanks-like';
-import { getBoxcoinStatus, getPostBoxcoinConfig } from '@service/thanks';
+import { getBoxcoinStatus, getPostBoxcoinConfig } from '../../service/thanks';
 import ThanksShare from './thanks-share';
 import ThanksRecord from './thanks-record';
-import EventEmitter from '@utils/event-emitter';
+import EventEmitter from '../../utils/event-emitter';
 
 export const thanksRecordEvnetKey = 'updateRecord';
 export const thanksRecordEventEmitter = new EventEmitter();

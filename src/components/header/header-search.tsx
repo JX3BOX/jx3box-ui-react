@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { isMobileSize } from '@utils/utils';
-import { Jx3BoxContext } from '@components/provider';
+import { isMobileSize } from '../../utils/utils';
+import { Jx3BoxContext } from '..//provider';
 import SearchKeySlash from '../../assets/header/search-key-slash.svg';
-import { getSearchUrl } from '@service/header';
+import { getSearchUrl } from '../../service/header';
 
 const HeaderSearch = () => {
   const { client } = useContext(Jx3BoxContext);
