@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "rollup -c rollup/rollup.config.js ",
+    "build:vite": "vite build",
     "storybook": "rollup -c rollup/rollup.config.js --watch && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
