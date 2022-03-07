@@ -1,6 +1,6 @@
 {
   "name": "@jx3box/jx3box-ui-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Jx3Box-UI react version",
   "main": "build/index.js",
   "module": "src/index.esm.ts",

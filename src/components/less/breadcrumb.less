@@ -11,11 +11,16 @@
     border-bottom: 1px solid @border-hr;
     transition:0.5s ease-in-out;
 
+    .u-toggle{
+        img{.size(18px,29px);.db;}
+    }
+
     .u-channel {
         .fl;
         span {
             .bold;
             color: @color;
+            .fz(16px);
         }
         .mr(22px);
         // padding:10px;
@@ -129,6 +134,12 @@
             white-space: nowrap;
             overflow: auto;
         }
+    }
+}
+
+@media screen and (max-width:@phone){
+    .c-breadcrumb{
+        .u-channel-logo,.u-op{.none !important;}
     }
 }
 @media print{
