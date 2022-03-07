@@ -42,8 +42,8 @@ const HeaderUser: React.FC<HeaderUserProps> = () => {
    */
   const [proType, proText, vipCls, expireTime] = useMemo(
     () => [
-      isPro ? '专业版' : '高级版',
       isPro ? 'PRO' : 'PRE',
+      isPro ? '专业版' : '高级版',
       classNames('i-icon-vip', {
         ['on']: isVip || isPro,
       }),
@@ -58,7 +58,7 @@ const HeaderUser: React.FC<HeaderUserProps> = () => {
    */
   const userProfileOverlay = useMemo(
     () => (
-      <Menu id='u-profile-menu-overlay'>
+      <Menu class="c-header-user-panel" id='u-profile-menu-overlay'>
         <Menu.Item className='c-header-profile' key='u-me'>
           <a className='u-me' href={links.homepage}>
             <b>{makeUsername(user.name)}</b>
@@ -78,7 +78,8 @@ const HeaderUser: React.FC<HeaderUserProps> = () => {
           <a className='u-vip' href='/vip/premium?from=header_usermenu' target='_blank'>
             <i className={vipCls}>{proType}</i>
             <span className='u-vip-type'>
-              {isVip || isPro ? <span className='u-vip-left'>{expireTime}天</span> : '升级账号类型'}
+              {proText}
+              {isVip || isPro ? <span className='u-vip-left'>({expireTime})天</span> : '升级账号类型'}
             </span>
           </a>
         </Menu.Item>

@@ -130,8 +130,10 @@ export const makeUsername = (name: string) =>
 export const makeVipExpireTime = (time: any): number => {
   const vipExpireTime = +new Date(time);
   const currentTime = +new Date();
-  return parseInt(`${vipExpireTime - currentTime / 86400000}`);
+  const expireTime = parseInt((vipExpireTime - currentTime) / 86400000)
+  return expireTime;
 };
+
 
 /**
  * 返回 location
