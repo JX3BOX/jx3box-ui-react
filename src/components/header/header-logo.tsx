@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Dropdown } from 'antd';
 import { __imgPath } from '@jx3box/jx3box-common/data/jx3box.json';
-import Logo from '../../assets/header/logo.svg';
+import Logo from '../../assets/header/logo_white.svg';
 import boxData from '../../data/box.json';
 import HeaderSearch from './header-search';
 import { Jx3BoxContext } from '../provider';

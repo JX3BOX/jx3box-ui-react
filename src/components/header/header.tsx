@@ -20,8 +20,8 @@ const Header: React.FC<HeaderProps> = () => {
       <header className='c-header' id='c-header'>
         <div className='c-header-inner'>
           <HeaderLogo />
-          <HeaderSearch />
           <HeaderSwitch />
+          <HeaderSearch />
           <HeaderNav />
           <HeaderUser />
         </div>
