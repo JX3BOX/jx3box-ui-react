@@ -58,7 +58,7 @@ const HeaderUser: React.FC<HeaderUserProps> = () => {
    */
   const userProfileOverlay = useMemo(
     () => (
-      <Menu class="c-header-user-panel" id='u-profile-menu-overlay'>
+      <Menu className='c-header-user-panel' id='u-profile-menu-overlay'>
         <Menu.Item className='c-header-profile' key='u-me'>
           <a className='u-me' href={links.homepage}>
             <b>{makeUsername(user.name)}</b>

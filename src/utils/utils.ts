@@ -128,9 +128,9 @@ export const makeUsername = (name: string) =>
  * @returns
  */
 export const makeVipExpireTime = (time: any): number => {
-  const vipExpireTime = +new Date(time);
-  const currentTime = +new Date();
-  const expireTime = parseInt((vipExpireTime - currentTime) / 86400000)
+  const vipExpireTime = new Date(time).getTime();
+  const currentTime = new Date().getTime();
+  const expireTime:number = ((vipExpireTime - currentTime) / 86400000)^0;
   return expireTime;
 };
 
