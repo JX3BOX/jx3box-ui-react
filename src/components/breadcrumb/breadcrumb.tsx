@@ -2,7 +2,7 @@ import React, { ReactNode, useContext, useEffect, useMemo, useState } from 'reac
 import { Button } from 'antd';
 import { FormOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-import { publishLink } from '@jx3box/jx3box-common/js/utils';
+import { publishLink, getAppIcon } from '@jx3box/jx3box-common/js/utils';
 import { feedback } from '@jx3box/jx3box-common/data/jx3box.json';
 import Menu from '../../assets/bread/menu.svg';
 import BreadCrumbBE from './breadcrumb-backend';
@@ -15,6 +15,7 @@ export interface BreadcrumbProps {
    * @param name
    *
    * 点击 title 跳转的链接
+   * @todo 当root不传时，则root的链接使用 "/slug"
    * @param root
    *
    * 组装 publishLink 的请求地址
@@ -33,8 +34,8 @@ export interface BreadcrumbProps {
    * @param overlayEnable
    */
   name: string;
-  root: string;
   slug: string;
+  root?: string;
   crumbEnable?: boolean;
   publishEnable?: boolean;
   feedbackEnable?: boolean;
@@ -48,10 +49,10 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
   const { toggle } = leftSiderHook;
   const {
     name,
-    root,
     slug,
     logo,
     crumbEnable,
+    root = `/${slug}`,
     publishEnable = true,
     feedbackEnable = true,
     overlayEnable = false,
@@ -124,7 +125,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
         )}
 
         <a className={channelCls} href={root}>
-          <i className='u-channel-logo'>{logo}</i>
+          <i className='u-channel-logo'>{logo ? logo : <img src={getAppIcon(slug)} />}</i>
           <span className='u-title'>{name}</span>
         </a>
 
