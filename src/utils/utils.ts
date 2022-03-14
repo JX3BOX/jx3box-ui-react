@@ -14,7 +14,7 @@ import { HeaderNavData } from './types';
  * @returns
  */
 export const getCurrentClient = (): string =>
-  location.hostname.includes(CLIENT_TYPE_ORIGIN) ? CLIENT_TYPE_ORIGIN : CLIENT_TYPE_STD;
+  location.href.includes(CLIENT_TYPE_ORIGIN) ? CLIENT_TYPE_ORIGIN : CLIENT_TYPE_STD;
 
 /**
  * 返回当前客户端版本是否是正式服
@@ -130,10 +130,9 @@ export const makeUsername = (name: string) =>
 export const makeVipExpireTime = (time: any): number => {
   const vipExpireTime = new Date(time).getTime();
   const currentTime = new Date().getTime();
-  const expireTime:number = ((vipExpireTime - currentTime) / 86400000)^0;
+  const expireTime: number = ((vipExpireTime - currentTime) / 86400000) ^ 0;
   return expireTime;
 };
-
 
 /**
  * 返回 location
