@@ -10,6 +10,7 @@ import { getMenu } from '../../service/header';
 export interface HeaderNavLinkProps {
   item: HeaderNavData;
   className?: string;
+  children?: React.ReactNode;
 }
 
 /**

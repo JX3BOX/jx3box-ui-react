@@ -19,7 +19,9 @@ const changeJx3BoxClient = (targetClient: string) => {
   location.href = location.href.replace(getClientUrl(currentClient), getClientUrl(targetClient));
 };
 
-export interface BasicLayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface BasicLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
+}
 
 const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const { className, ...rests } = props;

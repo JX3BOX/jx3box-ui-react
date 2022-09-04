@@ -40,6 +40,7 @@ export interface BreadcrumbProps {
   feedbackEnable?: boolean;
   overlayEnable?: boolean;
   logo?: ReactNode;
+  children?: ReactNode;
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = props => {

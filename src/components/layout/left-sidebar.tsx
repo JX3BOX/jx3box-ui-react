@@ -5,7 +5,11 @@ import Close from '../../assets/leftsidebar/close.svg';
 import Open from '../../assets/leftsidebar/open.svg';
 import { Jx3BoxContext } from '../provider';
 
-const LeftSidebar: React.FC<any> = props => {
+interface LeftSidebarProps {
+  children?: React.ReactNode;
+}
+
+const LeftSidebar: React.FC<LeftSidebarProps> = props => {
   const { breadcrumbVisible, leftSidebarVisible, leftSiderHook } = useContext(Jx3BoxContext);
   const { show, hide, toggle, setHasLeftSidebar } = leftSiderHook;
 

@@ -2,7 +2,9 @@ import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
 import { Jx3BoxContext } from '../provider';
 
-interface LayoutMainProps {}
+interface LayoutMainProps {
+  children?: React.ReactNode;
+}
 
 /**
  * Layout 主显示容器 LayoutMain
